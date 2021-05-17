@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>PET SITTERS</h1>
+
+<%= link_to 'Show pet sitters', pet_sitters_path, class:"btn btn-primary btn-lg" %>
+<br><br>
+<div class="row">
+    <% @pet_sitters.each do |pet_sitter| %>
+        <div class="col">  
+            <div class="card" style="width: 18rem;">
+                <%= image_tag pet_sitter.picture, class:"card-img-top" %>
+                    <div class="card-body">
+                        <h3>Name: <%= pet_sitter.name %></h3>
+                        <p>E-mail: <%= pet_sitter.email %></p>
+                        <p>About me $<%= pet_sitter.about_me %></p>
+                        <p>Expertise: <%= pet_sitter.expertise %></p>
+                        <p>Address: <%= pet_sitter.address %></p>
+                        <p>Post code: <%= pet_sitter.post_code %></p>
+                        <p>Services: <%= pet_sitter.services %></p>
+                        <p><%= link_to 'Show', pet_sitter, class:"btn btn-primary" %></p>
+                        <p><%= link_to 'Edit', edit_pet_sitter_path(pet_sitter), class:"btn btn-primary" %></p>
+                    </div>  
+            </div>
+        </div>
+    <% end %>
+</div>

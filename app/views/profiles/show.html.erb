@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-6">
+            <p id="notice"><%= notice %></p>
+
+            <h1>PROFILE</h1>
+
+            <p>
+                <strong>Name:</strong>
+                <%= @profile.name %>
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                <%= @profile.email %>
+            </p>
+
+            <p>
+            <strong>Address:</strong>
+                <%= @profile.address %>
+            </p>
+
+            <p>
+            <strong>Post code:</strong>
+                <%= @profile.post_code %>
+            </p>
+
+            <p>
+            <strong>Pets:</strong>
+                <%= @profile.pet %>
+            </p>
+
+        </div>
+        <div class="col-md-6">
+            <%= image_tag @profile.picture, class:"show-picture" %>
+        </div>
+    </div>
+</div>
+
+<%= link_to 'Back', root_path ,class:"btn btn-primary"%> |
+<%= link_to 'Edit', edit_profile_path(@game), class:"btn btn-primary"%> |
+<%
+=begin%>
+ <%= link_to 'Delete', root_path(@game), method: :delete, class:'btn btn-danger' %> 
+<%
+=end%>

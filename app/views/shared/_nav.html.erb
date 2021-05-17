@@ -8,13 +8,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <%= link_to 'Profile', profile_path, class:"nav-link" %>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pet sitter</a>
+                    <%= link_to 'Pet Sitters', petsitters_path, class:"nav-link" %>
+                    <%
+=begin%>
+ <a class="nav-link" href="#">Pet sitter</a> 
+<%
+=end%>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Order</a>
+                    <%= link_to 'Orders', orders_path, class:"nav-link" %>
+                    <%
+=begin%>
+ <a class="nav-link" href="#">Order</a> 
+<%
+=end%>
                 </li>
 
             </ul>
