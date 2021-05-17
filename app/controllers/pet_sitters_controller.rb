@@ -1,6 +1,10 @@
 class PetSittersController < ApplicationController
 
     def index
-        @petsitters = PetSitter.all
+        @pet_sitters = User.where(role: "pet_sitter")
+    end
+
+    def show
+
     end
 end
