@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-  belongs_to :user, foreign_key: 'client_id'
-  belongs_to :user, foreign_key: 'pet_sitter_id'
+  has_many :order_services, dependent: :destroy
+  has_one :payment, dependent: :destroy
 end

@@ -4,8 +4,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :review
       t.datetime :date
       t.integer :rating
-      t.references :pet_sitter_id, null: false, foreign_key:  {to_table: :users}
-      t.references :client_id, null: false, foreign_key:  {to_table: :users}
+      t.references :pet_sitter, null: false, foreign_key:  {to_table: :users}
+      t.references :client, null: false, foreign_key:  {to_table: :users}
       t.timestamps
     end
   end
