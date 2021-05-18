@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'service/create'
+  get 'service/show'
+  get 'service/edit'
+  get 'service/delete'
   devise_for :users
   # get 'home/index'
   root "home#index"

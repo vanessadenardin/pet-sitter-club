@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_id: one
+  pet_sitter_id: one
+  date: 2021-05-18 15:15:21
+  status: false
+
+two:
+  client_id: two
+  pet_sitter_id: two
+  date: 2021-05-18 15:15:21
+  status: false

@@ -10,10 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_131248) do
+ActiveRecord::Schema.define(version: 2021_05_18_055744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "client_id_id", null: false
+    t.bigint "pet_sitter_id_id", null: false
+    t.datetime "date"
+    t.boolean "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id_id"], name: "index_orders_on_client_id_id"
+    t.index ["pet_sitter_id_id"], name: "index_orders_on_pet_sitter_id_id"
+  end
+
+  create_table "pet_types", force: :cascade do |t|
+    t.string "pet_type_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.bigint "client_id_id", null: false
+    t.bigint "pet_types_id", null: false
+    t.string "name"
+    t.integer "age"
+    t.string "observations"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id_id"], name: "index_pets_on_client_id_id"
+    t.index ["pet_types_id"], name: "index_pets_on_pet_types_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "review"
+    t.datetime "date"
+    t.integer "rating"
+    t.bigint "pet_sitter_id_id", null: false
+    t.bigint "client_id_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id_id"], name: "index_reviews_on_client_id_id"
+    t.index ["pet_sitter_id_id"], name: "index_reviews_on_pet_sitter_id_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.bigint "pet_sitter_id_id", null: false
+    t.string "name"
+    t.text "description"
+    t.decimal "price", precision: 10, scale: 2
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_sitter_id_id"], name: "index_services_on_pet_sitter_id_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_131248) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pet_type_id"
     t.boolean "admin"
     t.string "first_name"
     t.string "last_name"
@@ -31,9 +84,15 @@ ActiveRecord::Schema.define(version: 2021_05_17_131248) do
     t.string "address"
     t.integer "post_code"
     t.string "role"
-    t.integer "pet_type_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "users", column: "client_id_id"
+  add_foreign_key "orders", "users", column: "pet_sitter_id_id"
+  add_foreign_key "pets", "pet_types", column: "pet_types_id"
+  add_foreign_key "pets", "users", column: "client_id_id"
+  add_foreign_key "reviews", "users", column: "client_id_id"
+  add_foreign_key "reviews", "users", column: "pet_sitter_id_id"
+  add_foreign_key "services", "users", column: "pet_sitter_id_id"
 end

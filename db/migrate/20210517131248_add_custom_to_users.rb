@@ -8,6 +8,5 @@ class AddCustomToUsers < ActiveRecord::Migration[6.1]
     add_column :users, :address, :string
     add_column :users, :post_code, :integer
     add_column :users, :role, :string
-    add_column :users, :pet_type_id, :integer
   end
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pet_sitter_id: one
+  name: MyString
+  description: 
+  price: 9.99
+  active: false
+
+two:
+  pet_sitter_id: two
+  name: MyString
+  description: 
+  price: 9.99
+  active: false
