@@ -9,7 +9,8 @@ class PetsController < ApplicationController
   end
 
   def delete
-    Pet.find(params[:id]).destroy
+    @pet.destroy
+    flash[:alert] = 'Successfully deleted!'
     redirect_to pets_path
   end
 end

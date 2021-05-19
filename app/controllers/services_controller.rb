@@ -8,12 +8,19 @@ class ServicesController < ApplicationController
       @service = Service.find(params[:id])
   end
 
+  def new
+    @service = Service.new
+  end
+
+
   def edit
   end
 
   def delete
-    Service.find(params[:id]).destroy
+    @service.destroy
+    flash[:alert] = 'Successfully deleted!'
     redirect_to services_path
-
   end
+
+
 end

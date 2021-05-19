@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     end
 
     def delete
-        User.find(params[:id]).destroy
+        @user.destroy
+        flash[:alert] = 'Successfully deleted!'
         redirect_to root_path
     end
 end
