@@ -2,11 +2,12 @@
 
 <% @services.each do |service| %>
     <div class="card border-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header bg-transparent border-secondary"><%= service.name %></div>
-    <div class="card-body text-secondary">
-        <h5 class="card-text"><%= service.description %></h5>
-        <p class="card-title"><%= service.pet_sitter_id %></p>
-    </div>
-    <div class="card-footer bg-transparent border-secondary"><%= service.price %></div>
+        <div class="card-header bg-transparent border-secondary"><%= service.name %></div>
+        <div class="card-header bg-transparent border-secondary"><%= service.description %></div>
+        <div class="card-body">
+            <%= link_to 'Find a pet sitter for your pur-baby', service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %>
+            <%= link_to 'Add service', pet_sitters_path, class:"card-link btn btn-outline-primary btn-sm" %>
+        </div>
+
     </div>
 <% end %>

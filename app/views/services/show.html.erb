@@ -1,2 +1,15 @@
-<h1>Services#show</h1>
-<p>Find me in app/views/services/show.html.erb</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"><%= @service.name %></h1>
+        <p class="lead"><%= @service.description %></p>
+    </div>
+</div>
+<div class="mx-auto" style="width: 200px;">
+    <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-lg" %>
+    <%= link_to 'Back', services_path, class:" btn btn-outline-primary btn-lg" %>
+    <%= link_to 'Place order', service_path, class:" btn btn-outline-success btn-lg" %>
+</div>
+
+
+
+
