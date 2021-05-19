@@ -1,0 +1,26 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"><%= "PETS" %></h1>
+
+        <% @pets.each do |pet| %>
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header bg-transparent border-secondary"><%= pet.name %></div>
+            <div class="card-body text-secondary">
+            <h5 class="card-text"><%= pet.age %></h5>
+            <%
+=begin%>
+ <% if observations != empty %>
+            <p class="card-text"><%= pet.observations %></p>
+            <% end %> 
+<%
+=end%>
+
+    </div>
+</div>
+
+<%= link_to 'Back', profile_path, class:" btn btn-outline-primary btn-sm" %> |
+<%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+<%= link_to 'Add new pet', new_pet_path, class:"card-link btn btn-outline-success btn-sm" %> |
+<%= link_to 'Delete', pets_path, class:"card-link btn btn-outline-danger btn-sm" %>
+
+<% end %>

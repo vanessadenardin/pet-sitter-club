@@ -12,5 +12,8 @@ class ServicesController < ApplicationController
   end
 
   def delete
+    Service.find(params[:id]).destroy
+    redirect_to services_path
+
   end
 end
