@@ -12,7 +12,7 @@ class PetSittersController < ApplicationController
         @pet_sitter = User.find(params[:id])
     end
 
-    def delete
+    def destroy
         @pet_sitter.destroy
         flash[:alert] = 'Successfully deleted!'
         redirect_to pet_sitters_path
