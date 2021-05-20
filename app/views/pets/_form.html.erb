@@ -1,0 +1,13 @@
+<ul>
+    <% listing.errors.full_messages do |message| %>
+        <li style='color: maroon'><%= message %></li>
+    <% end %>
+</ul>
+
+<%= simple_form_for @pet do |f| %>
+    <%= f.input :name %>
+    <%= f.input :age %>
+    <%= f.input :observations %>
+    <%= f.collection_radio_buttons :pet_types_id, PetType.all, :id, :pet_type_name %>
+    <%= f.button :submit, class:"card-link btn btn-success btn-sm"  %>
+<% end %>

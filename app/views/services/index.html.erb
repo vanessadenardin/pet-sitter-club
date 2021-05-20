@@ -6,7 +6,8 @@
         <div class="card-header bg-transparent border-secondary"><%= service.description %></div>
         <div class="card-body">
             <%= link_to 'Find a pet sitter for your pur-baby', service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %> |
-            <%= link_to 'Add service', pet_sitters_path, class:"card-link btn btn-outline-primary btn-sm" %> |
+            <%= link_to 'Edit', edit_service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %> |
+            <%= link_to 'Add service', new_service_path, class:"card-link btn btn-outline-primary btn-sm" %> |
             <%= link_to 'Delete service', services_path, class:"card-link btn btn-outline-danger btn-sm" %>
         </div>
 
