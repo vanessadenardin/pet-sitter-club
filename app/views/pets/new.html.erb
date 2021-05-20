@@ -1,1 +1,9 @@
 <h1>NEW PET</h1>
+
+<%= simple_form_for @pet do |f| %>
+    <%= f.input :name %>
+    <%= f.input :age %>
+    <%= f.input :observations %>
+    <%= f.collection_radio_buttons :pet_types_id, PetType.all, :id, :pet_type_name %>
+    <%= f.button :submit %>
+<% end %>

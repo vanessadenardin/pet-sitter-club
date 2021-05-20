@@ -18,6 +18,7 @@ rescue => exception
 end
 
 pet_type = PetType.create(pet_type_name: "cat")
+pet_type2 = PetType.create(pet_type_name: "dog")
 Pet.create(client_id: client.id, pet_types_id: pet_type.id)
 
 service = Service.create(name: "Litter box cleaning", description: "testtestes")

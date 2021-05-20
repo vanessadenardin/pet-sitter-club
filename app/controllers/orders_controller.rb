@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
         @order = Order.find(current_user.id)
     end
 
-    def destroy
+    def delete
         @order.destroy
         flash[:alert] = 'Successfully deleted!'
         redirect_to root_path
