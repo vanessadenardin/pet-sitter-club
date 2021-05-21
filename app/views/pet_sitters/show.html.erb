@@ -1,36 +1,46 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4"><%= @pet_sitter.first_name %></h1>
+        <h1 class="display-4">Learn more about pet sitter <%= @user.first_name %></h1>
 
         <p>
                 <strong>Name:</strong>
-                <%= @pet_sitter.first_name %>
-                <%= @pet_sitter.last_name %>
+                <%= @user.first_name %>
+                <%= @user.last_name %>
             </p>
 
             <p>
                 <strong>About me...</strong>
-                <%= @pet_sitter.about %>
+                <%= @user.about %>
             </p>
 
             <p>
                 <strong>Address:</strong>
-                <%= @pet_sitter.address %>
-                <%= @pet_sitter.post_code %>
+                <%= @user.address %>
+                <%= @user.post_code %>
             </p>
 
-            <% @pet_sitter.services.each do |service| %>
-                <% if service.active %>
+            <p>
+                <strong>Services:</strong>
+                <% @user.pet_sitter_services.each do |pet_sitter_service| %>
+                    <% if pet_sitter_service.active %>
+                        <p>
+                            <%= pet_sitter_service.service.name %> | <%= pet_sitter_service.service.description %> | <% pet_sitter_service.price %>
+                        </p>
+                    <% end %>
+                <% end %>
+            </p>
+
+            <p>
+                <strong>Reviews:</strong>
+                <% @user.reviews.each do |review| %>
                     <p>
-                        <strong>Services:</strong>
-                        <%= service.name %>
-                        <%= service.description %>
+                        <%= review.review %>
                     </p>
                 <% end %>
-            <% end %>
+            </p>
+
 
 </div>
 
     <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
     <%= link_to 'Back', pet_sitters_path, class:" btn btn-outline-success btn-sm" %> |
-    <%= link_to 'Reviews', services_path, class:" btn btn-outline-primary btn-sm" %>

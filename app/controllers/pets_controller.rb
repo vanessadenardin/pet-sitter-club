@@ -4,18 +4,22 @@ class PetsController < ApplicationController
   before_action :set_pet_types, only: [:show, :new]
 
   def index
+
     @pets = Pet.all
   end
 
   def show
+
     p @pet
   end
 
   def new
+
     @pet = Pet.new
   end
 
   def create
+
     @pet = current_user.pets.new(pets_params)
     if @pet.save
       redirect_to profile_path
@@ -35,10 +39,10 @@ class PetsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
+
     pet = Pet.find(params[:id])
     pet.destroy
     flash[:alert] = 'Successfully deleted!'
@@ -46,15 +50,19 @@ class PetsController < ApplicationController
   end
 
   private
+  
     def set_pet
+
       @pet = Pet.find(params[:id])
     end
 
     def set_pet_types
+
       @pet_types = PetType.all
     end
 
     def pets_params
+
       params.require(:pet).permit(:name, :age, :observations, :pet_types_id)
     end
 

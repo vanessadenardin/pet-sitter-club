@@ -6,12 +6,8 @@
             <h1>PROFILE</h1>
 
             <p>
-                <strong>First Name:</strong>
+                <strong>Name:</strong>
                 <%= @user.first_name %>
-            </p>
-
-            <p>
-                <strong>Last Name:</strong>
                 <%= @user.last_name %>
             </p>
 
@@ -48,6 +44,15 @@
                             <%= pet_sitter_service.service.name %> | <%= pet_sitter_service.service.description %> | <% pet_sitter_service.price %>
                         </p>
                     <% end %>
+                <% end %>
+            </p>
+
+            <p>
+                <strong>Reviews:</strong>
+                <% @user.reviews.each do |review| %>
+                    <p>
+                        <%= review.review %>
+                    </p>
                 <% end %>
             </p>
 
