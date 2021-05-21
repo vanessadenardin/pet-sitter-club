@@ -23,7 +23,14 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-  </div>
+    <%= f.input :abn,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "abn" }%>
+    <%= f.input :about,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "about" }%>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up", class:"btn btn-success my-2 my-sm-0 gap-2" %>
