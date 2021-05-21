@@ -2,10 +2,24 @@
     <div class="container">
         <h1 class="display-4"><%= @pet_sitter.first_name %></h1>
 
-        <h2></h2>
-    </div>
+        <p>
+                <strong>Name:</strong>
+                <%= @pet_sitter.first_name %>
+                <%= @pet_sitter.last_name %>
+            </p>
+
+            <p>
+                <strong>About me...</strong>
+                <%= @pet_sitter.about %>
+            </p>
+
+            <p>
+                <strong>Reviews:</strong>
+                <%= @user.review %>
+            </p>
 </div>
 
     <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
     <%= link_to 'Back', pet_sitters_path, class:" btn btn-outline-success btn-sm" %>
+    <%= link_to 'Reviews', pet_sitters_path, class:" btn btn-outline-primary btn-sm" %>
 
