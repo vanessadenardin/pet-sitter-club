@@ -1,5 +1,16 @@
-<h1>THE PET SITTER CLUB</h1>
-
+<div class="jumbotron">
+    <h1 class="display-4">THE PET SITTER CLUB</h1>
+    <p class="lead">Welcome!</p>
+    <hr class="my-4">
+    <p>This is a marketplace app created by Vanessa Denardin.</p>
+    <p class="lead">
+<%= link_to 'My profile', profile_path ,class:" btn btn-primary btn-lg"%> 
+<%= link_to 'Pet Sitters', pet_sitters_path, class:" btn btn-primary btn-lg" %> 
+<%= link_to 'Services', services_path, class:"btn btn-primary btn-lg" %> 
+<%= link_to 'Orders', orders_path, class:"btn btn-primary btn-lg" %>
+<%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-lg" %> 
+</p>
+</div>
 
     <div class="carousel slide active" data-ride="carousel">
 
@@ -30,10 +41,6 @@
     </div>
 
     
-<%= link_to 'My profile', profile_path ,class:" btn btn-secondary btn-sm btn-block"%> 
-<%= link_to 'Pet Sitters', pet_sitters_path, class:" btn btn-secondary btn-sm btn-block" %> 
-<%= link_to 'Services', services_path, class:"btn btn-secondary btn-sm btn-block" %> 
-<%= link_to 'Orders', orders_path, class:"btn btn-secondary btn-sm btn-block" %>
 <%
 =begin%>
  <%= link_to 'Let us know your opinion', new_review_path, class:"btn btn-secondary btn-sm btn-block" %> 

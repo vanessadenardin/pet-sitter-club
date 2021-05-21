@@ -1,3 +1,32 @@
 <h1>ORDERS</h1>
 
-<%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+
+<p>We welcome your feedback. Please submit the form below to let us know what you think or alert us to any problems you are having with Th Pet Sitter Club.</p>
+<h2>Leave your review here</h2>
+<%= form_with url: leave_review_path, local: true, method: :post do %>
+  <div>
+    <%= label_tag "name" %>
+    <%= text_field_tag "name", nil %>
+  <div>
+    <%= label_tag "email" %>
+    <%= email_field_tag "email", nil %>
+  <div>
+    <%= label_tag "rating" %>
+    <%= text_field_tag "rating", nil %>
+  </div>
+  <div> 
+    <%= label_tag "message" %><br />
+    <%= text_area_tag "message", nil, size: "27x7" %>  <%= submit_tag "Send Review" %>
+    <% if local_assigns.has_key? :status_msg %>
+      <p><%= status_msg %></p>
+    <% end %>
+
+<% end %>
+
+
+
+<%
+=begin%>
+ <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> 
+<%
+=end%>

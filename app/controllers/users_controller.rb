@@ -22,4 +22,5 @@ class UsersController < ApplicationController
 
     #     params.require(:user).permit(:role_id)
     # end
+
 end
