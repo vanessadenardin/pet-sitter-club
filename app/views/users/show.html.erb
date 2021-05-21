@@ -34,10 +34,23 @@
                 <%= @user.role %>
             </p>
 
-                <p>
-                    <strong>Pets:</strong>
-                    <%= @user.pets %>
-                </p>
+            <p>
+                <strong>Pets:</strong>
+                <%= @user.pets %>
+            </p>
+
+
+            <p>
+                <strong>Services:</strong>
+                <% @user.pet_sitter_services.each do |pet_sitter_service| %>
+                    <% if pet_sitter_service.active %>
+                        <p>
+                            <%= pet_sitter_service.service.name %> | <%= pet_sitter_service.service.description %> | <% pet_sitter_service.price %>
+                        </p>
+                    <% end %>
+                <% end %>
+            </p>
+
 
         </div>
         <%
@@ -52,10 +65,11 @@
 
 </div>
 
-<%= link_to 'Back', root_path ,class:" btn btn-outline-primary btn-sm"%> |
+<%= link_to 'Back', root_path ,class:"btn btn-outline-primary btn-sm"%> |
 <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-outline-primary btn-sm"%> | 
-<%= link_to 'Pets', pets_path, class:" btn btn-outline-success btn-sm" %> |
+<%= link_to 'Pets', pets_path, class:"btn btn-outline-success btn-sm" %> |
 <%= link_to 'Add new pet', new_pet_path, class:"card-link btn btn-outline-success btn-sm" %> |
+<%= link_to 'Leave review', orders_path, class:" btn btn-outline-primary btn-sm" %> |
 <%= link_to 'Delete profile', root_path, class:"card-link btn btn-outline-danger btn-sm" %>
 
 

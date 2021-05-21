@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # pet sitter services relationship
   has_many :pet_sitter_services, dependent: :destroy, foreign_key: 'pet_sitter_id'
   has_many :services, through: :pet_sitter_services
+  # accepts_nested_attributes_for :pet_sitter_services
 
   def admin?
     admin

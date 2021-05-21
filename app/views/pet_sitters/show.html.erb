@@ -14,12 +14,23 @@
             </p>
 
             <p>
-                <strong>Reviews:</strong>
-                <%= @user.review %>
+                <strong>Address:</strong>
+                <%= @pet_sitter.address %>
+                <%= @pet_sitter.post_code %>
             </p>
+
+            <% @pet_sitter.services.each do |service| %>
+                <% if service.active %>
+                    <p>
+                        <strong>Services:</strong>
+                        <%= service.name %>
+                        <%= service.description %>
+                    </p>
+                <% end %>
+            <% end %>
+
 </div>
 
     <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
-    <%= link_to 'Back', pet_sitters_path, class:" btn btn-outline-success btn-sm" %>
-    <%= link_to 'Reviews', pet_sitters_path, class:" btn btn-outline-primary btn-sm" %>
-
+    <%= link_to 'Back', pet_sitters_path, class:" btn btn-outline-success btn-sm" %> |
+    <%= link_to 'Reviews', services_path, class:" btn btn-outline-primary btn-sm" %>

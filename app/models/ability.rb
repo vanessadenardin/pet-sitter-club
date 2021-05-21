@@ -4,9 +4,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # can :read, User, id: user.id
-    # can :read, Order, client_id: current_user.id
-    # can :read, Order, pet_sitter_id: current_user.id
+    can :read, User, id: user.id
+    can :read, Order, client_id: current_user.id
+    can :read, Order, pet_sitter_id: current_user.id
     # Define abilities for the passed in user here. For example:
     # if user.pet_sitter?
     #   can :read, Order, pet_sitter_id: current_user.id
@@ -15,12 +15,12 @@ class Ability
     # elsif user.admin?
     #   can :manage, :all
     # end
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
+      # user ||= User.new # guest user (not logged in)
+      # if user.admin?
+      #   can :manage, :all
+      # else
+      #   can :read, :all
+      # end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
@@ -40,4 +40,16 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
+
+  # def admin?
+  #   has_role?(:admin)
+  # end
+  
+  # def client?
+  #   has_role?(:client)
+  # end 
+
+  # def pet_sitter?
+  #   has_role?(:pet_sitter)
+  # end 
 end
