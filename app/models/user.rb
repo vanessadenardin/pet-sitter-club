@@ -18,6 +18,10 @@ class User < ApplicationRecord
   # some_user.ability.can? :read, @service
   # delegate :can?, :cannot?, to: :ability
 
+  validates :name, presence: true, length: { minimum: 2 }, on: :account_setup
+  validates :email, uniqueness: true, on: :account_setup
+  validates :post_code, presence: true, numericality: { only_integer: true }
+  
   def admin?
 
     admin
