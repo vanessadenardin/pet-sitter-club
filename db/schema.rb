@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_131728) do
   create_table "order_services", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "pet_sitter_service_id", null: false
+    t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_services_on_order_id"
@@ -77,9 +78,11 @@ ActiveRecord::Schema.define(version: 2021_05_18_131728) do
     t.integer "rating"
     t.bigint "pet_sitter_id", null: false
     t.bigint "client_id", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_reviews_on_client_id"
+    t.index ["order_id"], name: "index_reviews_on_order_id"
     t.index ["pet_sitter_id"], name: "index_reviews_on_pet_sitter_id"
   end
 
@@ -98,7 +101,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_131728) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "first_name"
     t.string "last_name"
     t.string "abn"

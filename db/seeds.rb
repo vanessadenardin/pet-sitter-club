@@ -30,3 +30,5 @@ OrderService.create(order_id: order.id, pet_sitter_service_id: pet_sitter_servic
 OrderService.create(order_id: order.id, pet_sitter_service_id: pet_sitter_service2.id)
 
 payment = Payment.create(order_id: order.id, total_amount: 100.00, payment_reference: "test")
+
+review = Review.create(order_id: order.id, client_id: client.id, pet_sitter_id: pet_sitter.id, review: "oioioioioioi", rating: 5, date: "1/6/2021")

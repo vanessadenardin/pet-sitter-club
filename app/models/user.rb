@@ -12,6 +12,10 @@ class User < ApplicationRecord
   has_many :services, through: :pet_sitter_services
   # accepts_nested_attributes_for :pet_sitter_services
 
+  has_many :orders, foreign_key: 'pet_sitter_id'
+  has_many :orders, foreign_key: 'client_id'
+
+
   def admin?
     admin
   end
@@ -22,5 +26,9 @@ class User < ApplicationRecord
 
   def pet_sitter?
     role == "pet_sitter"
+  end
+
+  def name
+    return "#{first_name} #{last_name}"
   end
 end

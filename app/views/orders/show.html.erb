@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"><%= @order.id %></h1>
+        <p class="lead"><%= @order.date %></p>
+        <% if current_user.client? %>
+          <p class="lead"><%= @order.client.name %></p>
+        <% else %>
+          <p class="lead"><%= @order.pet_sitter.name %></p>
+        <% end %>
+    </div>
+    
+    <h1 class="display-4">Services: </h1>
+    <div class="container">
+      <% @order.order_services.each do |order_services| %>
+        <p class="lead"><%= order_services.service.name %></p>
+        <p class="lead"><%= order_services.price %></p>
+      <% end %>
+    </div>
+
+    <h1 class="display-4">Review: </h1>
+    <div class="container">
+      <% if @order.review %>
+        <p class="lead"><%= @order.review.review %></p>
+      <% else %>
+        <%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-md" %> 
+      <% end %>
+    </div>
+
+    
+</div>
+<div class="mx-auto" style="width: 200px;">
+    <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+    <%= link_to 'Back', services_path, class:" btn btn-outline-primary btn-sm" %> |
+    <%= link_to 'Place order', service_path, class:" btn btn-outline-success btn-sm" %>
+</div>

@@ -13,7 +13,7 @@ class PetSittersController < ApplicationController
 
     def show
 
-        @user = User.find(current_user.id)
+        @user = User.find(params[:id])
         # p @user.pet_sitter_services.joins(:service)
         @user.pet_sitter_services.each do |service|
         end
