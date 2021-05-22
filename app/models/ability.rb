@@ -7,6 +7,11 @@ class Ability
     can :read, User, id: user.id
     can :read, Order, client_id: current_user.id
     can :read, Order, pet_sitter_id: current_user.id
+
+    # can :update, Profile, id: current_user.id
+    # can :update, Service, pet_sitter_id: current_user.id
+    # can :manage, :all
+
     # Define abilities for the passed in user here. For example:
     # if user.pet_sitter?
     #   can :read, Order, pet_sitter_id: current_user.id
@@ -21,6 +26,7 @@ class Ability
       # else
       #   can :read, :all
       # end
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

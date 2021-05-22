@@ -10,16 +10,18 @@ Rails.application.routes.draw do
   # get 'service/delete'
   devise_for :users
   # get 'home/index'
-  root "home#index"
+  root 'home#index'
 
   # resources :profile, only: [:show]
-  get "/profile", to: "users#show"
+  get '/profile', to: 'users#show'
   # get "/profile", to: "profile#show"
 
   resources :orders
   # get "/orders", to: "orders#index"
 
   resources :pet_sitters
+  post 'add_service', to: 'pet_sitters#add_service', as: 'add_service'
+  post 'remove_service', to: 'pet_sitters#remove_service', as: 'remove_service'
   # get "/petsitters", to: "pet_sitters#index"
 
   resources :services

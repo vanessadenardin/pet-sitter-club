@@ -1,14 +1,26 @@
 <h1>SERVICES</h1>
+<% if current_user.admin? %>
+    <%= link_to 'Add service', new_service_path, class:"card-link btn btn-primary btn-lg" %>
+<% end %>
+
 
 <% @services.each do |service| %>
     <div class="card border-secondary mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-secondary"><%= service.name %></div>
         <div class="card-header bg-transparent border-secondary"><%= service.description %></div>
+        <div class="card-header bg-transparent border-secondary"><%= number_to_currency(service.price, unit: "$") %></div>
         <div class="card-body">
-            <%= link_to 'Find a pet sitter for your pur-friend', service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %> |
-            <%= link_to 'Edit', edit_service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %> |
-            <%= link_to 'Add service', new_service_path, class:"card-link btn btn-outline-primary btn-sm" %> |
-            <%= link_to 'Delete service', services_path, class:"card-link btn btn-outline-danger btn-sm" %>
+            <% if current_user.client? %>
+                <%= link_to 'Find a pet sitter for your pur-friend', service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %>
+            <% else %>
+                <%= button_to 'Add', add_service_path(service), method: 'post', params: { service_id: 2 }, class:'card-link btn btn-primary btn-sm' %>
+                <%= button_to 'Remove', remove_service_path(service), method: 'post', params: { service_id: 2 }, class:'card-link btn btn-danger btn-sm' %>
+            <% end %>
+
+            <% if current_user.admin? %>
+                <%= link_to 'Edit', edit_service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %>
+                <%= link_to 'Delete service', services_path, class:"card-link btn btn-outline-danger btn-sm" %>
+            <% end %>
         </div>
 
     </div>

@@ -19,12 +19,12 @@ end
 
 pet_type = PetType.create(pet_type_name: "cat")
 pet_type2 = PetType.create(pet_type_name: "dog")
-Pet.create(client_id: client.id, pet_types_id: pet_type.id)
+Pet.create(client_id: client.id, pet_types_id: pet_type.id, name: "guri", age: 5)
 
-service = Service.create(name: "Litter box cleaning", description: "testtestes")
-service2 = Service.create(name: "Feed", description: "feed animals")
-pet_sitter_service = PetSitterService.create(pet_sitter_id: pet_sitter.id, service_id: service.id, price: 110, active: true)
-pet_sitter_service2 = PetSitterService.create(pet_sitter_id: pet_sitter.id, service_id: service2.id, price: 50, active: true)
+service = Service.create(name: "Litter box cleaning", description: "testtestes", price: 50.00, )
+service2 = Service.create(name: "Feed", description: "feed animals", price: 100.00, )
+pet_sitter_service = PetSitterService.create(pet_sitter_id: pet_sitter.id, service_id: service.id, active: true)
+pet_sitter_service2 = PetSitterService.create(pet_sitter_id: pet_sitter.id, service_id: service2.id, active: true)
 order = Order.create(client_id: client.id, pet_sitter_id: pet_sitter.id)
 OrderService.create(order_id: order.id, pet_sitter_service_id: pet_sitter_service.id)
 OrderService.create(order_id: order.id, pet_sitter_service_id: pet_sitter_service2.id)

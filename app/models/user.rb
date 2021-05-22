@@ -15,20 +15,25 @@ class User < ApplicationRecord
   has_many :orders, foreign_key: 'pet_sitter_id'
   has_many :orders, foreign_key: 'client_id'
 
+  # some_user.ability.can? :read, @service
+  # delegate :can?, :cannot?, to: :ability
 
   def admin?
+
     admin
   end
 
   def client?
+
     role == "client"
   end
 
   def pet_sitter?
+
     role == "pet_sitter"
   end
 
   def name
-    return "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 end

@@ -21,6 +21,44 @@ class PetSittersController < ApplicationController
         end
     end
 
+    def edit
+
+    end
+
+    def update
+
+        if @pet_sitter_service.update(services_params)
+            redirect_to @service
+        else
+            render :edit
+        end
+    end
+
+    def add_service
+        
+        pet_sitter_service = PetSitterService.find_by(pet_sitter_id: current_user.id, service_id: params[:service_id])
+        if pet_sitter_service
+            pet_sitter_service.active = true
+            pet_sitter_service.save
+        else
+            PetSitterService.new(pet_sitter_id: current_user.id, service_id: params[:service_id], active: true)
+
+        end
+    end
+
+    def remove_service
+        
+        pet_sitter_service = PetSitterService.find_by(pet_sitter_id: current_user.id, service_id: params[:service_id])
+        
+        if pet_sitter_service
+            pet_sitter_service.active = false
+            pet_sitter_service.save
+        else
+            PetSitterService.new(pet_sitter_id: current_user.id, service_id: params[:service_id], active: false)
+
+        end
+
+    end
 
     def destroy
 
@@ -29,5 +67,16 @@ class PetSittersController < ApplicationController
         redirect_to pet_sitters_path
     end
 
+    private
+
+    def set_pet_sitter_service
+
+        @pet_sitter_service = PetSitterService.find(params[:id])
+    end
+    
+    def pet_sitter_services_params
+    
+        params.require(:pet_sitter_service).permit(:price, :active)
+    end
 
 end

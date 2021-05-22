@@ -3,7 +3,6 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:edit, :update]
   
   def index
-
     @services = Service.all
   end
 
@@ -39,7 +38,6 @@ class ServicesController < ApplicationController
       render :edit
     end
   end
-
 
   def delete
 
