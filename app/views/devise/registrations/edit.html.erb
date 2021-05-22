@@ -12,6 +12,19 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name" }%>
+    <%= f.input :about,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "about" }%>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "address" }%>
+    <%= f.input :post_code,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "post_code" }%>
+
 
     <%= f.input :email, required: true, autofocus: true %>
 
@@ -33,7 +46,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class:" btn btn-primary btn-md" %>
   </div>
 <% end %>
 
