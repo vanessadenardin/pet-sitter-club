@@ -1,38 +1,25 @@
 class PetSittersController < ApplicationController
+    # load_and_authorize_resource
     
     def index
-
+        authorize! :index, User
         @pet_sitters = User.where(role: "pet_sitter")
     end
 
-    def new
-
-        @pet_sitter = User.new
-    end
-
-
     def show
-
+        authorize! :show, User
         @user = User.find(params[:id])
-        # p @user.pet_sitter_services.joins(:service)
-        # @user.pet_sitter_services.each do |service|
-        # end
-        # @user.reviews.each do |review|
-        # end
     end
 
-    def edit
 
-    end
+    # def update
 
-    def update
-
-        if @pet_sitter_service.update(services_params)
-            redirect_to @service
-        else
-            render :edit
-        end
-    end
+    #     if @pet_sitter_service.update(services_params)
+    #         redirect_to @service
+    #     else
+    #         render :edit
+    #     end
+    # end
 
     def add_service
 
@@ -61,23 +48,16 @@ class PetSittersController < ApplicationController
 
     end
 
-    def destroy
+    # private
 
-        @pet_sitter.destroy
-        flash[:alert] = 'Successfully deleted!'
-        redirect_to pet_sitters_path
-    end
+    # def set_pet_sitter_service
 
-    private
-
-    def set_pet_sitter_service
-
-        @pet_sitter_service = PetSitterService.find(params[:id])
-    end
+    #     @pet_sitter_service = PetSitterService.find(params[:id])
+    # end
     
-    def pet_sitter_services_params
+    # def pet_sitter_services_params
     
-        params.require(:pet_sitter_service).permit(:price, :active)
-    end
+    #     params.require(:pet_sitter_service).permit(:price, :active)
+    # end
 
 end

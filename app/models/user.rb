@@ -43,8 +43,12 @@ class User < ApplicationRecord
   end
 
   def review_ratings
-    total = reviews.inject(0) { |sum, review| sum + review.rating }
-    total / reviews.count
-
+    p reviews.count
+    if reviews.count.positive?
+      total = reviews.inject(0) { |sum, review| sum + review.rating }
+      total / reviews.count
+    else
+      0
+    end
   end
 end

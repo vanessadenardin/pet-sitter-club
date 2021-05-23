@@ -4,10 +4,15 @@
     <hr class="my-4">
     <p>This is a marketplace app created by Vanessa Denardin.</p>
     <p class="lead">
+
+    <% if user_signed_in? %>
     <%= link_to 'My profile', profile_path ,class:" btn btn-primary btn-lg"%> 
+    <% end %>
     <%= link_to 'Pet Sitters', pet_sitters_path, class:" btn btn-primary btn-lg" %>
     <%= link_to 'Services', services_path, class:"btn btn-primary btn-lg" %> 
+    <% if user_signed_in? %>
     <%= link_to 'Orders', orders_path, class:"btn btn-primary btn-lg" %>
+    <% end %>
 </p>
 </div>
 <div class="card m-3 drone-card" style="width: 18rem;">

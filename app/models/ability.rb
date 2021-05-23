@@ -4,10 +4,22 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, User, id: user.id
-    can :read, Order, client_id: current_user.id
-    can :read, Order, pet_sitter_id: current_user.id
+    alias_action :index, :to => :look
+    can :look, Service
+    can :read, User
+    # can :read, User, id: user.id
+    can :read, Order, client_id: user.id
+    can :read, Order, pet_sitter_id: user.id
 
+    # if user.client?
+    #   can :read, Pet, client_id: user.id
+    # end
+
+
+
+
+    return unless user.admin?
+      can :manage, :all
     # can :update, Profile, id: current_user.id
     # can :update, Service, pet_sitter_id: current_user.id
     # can :manage, :all
@@ -46,16 +58,4 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
-
-  # def admin?
-  #   has_role?(:admin)
-  # end
-  
-  # def client?
-  #   has_role?(:client)
-  # end 
-
-  # def pet_sitter?
-  #   has_role?(:pet_sitter)
-  # end 
 end

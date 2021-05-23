@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_pet, only: [:show, :update]
   before_action :set_pet_types, only: [:show, :new]

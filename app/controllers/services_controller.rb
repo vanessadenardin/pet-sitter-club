@@ -1,17 +1,20 @@
 class ServicesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_service, only: [:edit, :update]
   
   def index
     @services = Service.all
-    return unless current_user.pet_sitter?
+    return unless user_signed_in? && current_user.pet_sitter?
 
     @pet_sitter_services = PetSitterService.where(pet_sitter_id: current_user.id)
     @services.each do |service|
       begin
         exists = @pet_sitter_services.find_by(service_id: service.id)
+
         service.update_active(exists.active)
-      rescue ArgumentError
+      rescue
         service.update_active(false)
       end
     end
