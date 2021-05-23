@@ -4,11 +4,22 @@ class ServicesController < ApplicationController
   
   def index
     @services = Service.all
+    return unless current_user.pet_sitter?
+
+    @pet_sitter_services = PetSitterService.where(pet_sitter_id: current_user.id)
+    @services.each do |service|
+      begin
+        exists = @pet_sitter_services.find_by(service_id: service.id)
+        service.update_active(exists.active)
+      rescue ArgumentError
+        service.update_active(false)
+      end
+    end
   end
 
   def show
 
-      @service = Service.find(params[:id])
+    @service = Service.find(params[:id])
   end
 
   def new

@@ -16,6 +16,10 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :post_code,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "post_code" }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -23,7 +27,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.collection_radio_buttons :role, [:name => "client", :id => 1}, {:name => "pet_sitter", :id => 2}], :id, :name %> 
+    <%= f.collection_radio_buttons :role, [['client', 'Client'], ['pet_sitter', 'Pet Sitter']], :first, :last %> 
   <div class="form-actions">
     <%= f.button :submit, "Sign up", class:"btn btn-success my-2 my-sm-0 gap-2" %>
   </div>

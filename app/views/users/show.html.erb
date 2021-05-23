@@ -1,86 +1,97 @@
 <div class="jumbotron">
-    <div class="row">
-        <div class="col-md-6">
-            <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-6">
+      <p id="notice"><%= notice %></p>
 
-            <h1>PROFILE</h1>
+      <h1>PROFILE</h1>
 
-            <p>
-                <strong>Name:</strong>
-                <%= @user.first_name %>
-                <%= @user.last_name %>
-            </p>
+      <p>
+        <strong>Name:</strong>
+        <%= @user.first_name %>
+        <%= @user.last_name %>
+      </p>
 
-            <p>
-                <strong>Email:</strong>
-                <%= @user.email %>
-            </p>
+      <% if current_user.pet_sitter? %>
+      <p>
+        <strong>About me:</strong>
+        <%= @user.about %>
+      </p>
+      <% end %>
 
-            <p>
-                <strong>Address:</strong>
-                <%= @user.address %>
-            </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
 
-            <p>
-                <strong>Post code:</strong>
-                <%= @user.post_code %>
-            </p>
+      <p>
+        <strong>Address:</strong>
+        <%= @user.address %>
+      </p>
+      <% if current_user.pet_sitter? %>
+      <p>
+        <strong>ABN:</strong>
+        <%= @user.abn %>
+      </p>
+      <% end %>
 
-            <p>
-                <%= @user.role == "client" ? "Client" : "Pet Sitter"  %>
-            </p>
-            <% if current_user.client? %>
-            <p>
-                <strong>Pets:</strong>
-                <% @user.pets.each do |pet| %>
-                <p>
-                    - <%= pet.name %> | <%= pet.pet_type.pet_type_name %> | <%= pet.age %> 
-                </p>
-                <% end %>
+      <p>
+        <strong>Post code:</strong>
+        <%= @user.post_code %>
+      </p>
 
-            </p>
-            <% end %>
-            <% if current_user.pet_sitter? %>
-            <p>
-                <strong>Services:</strong>
-                <% @user.pet_sitter_services.each do |pet_sitter_service| %>
-                    <% if pet_sitter_service.active %>
-                        <p>
-                            <%= pet_sitter_service.service.name %> | <%= pet_sitter_service.service.description %> | <%= number_to_currency(pet_sitter_service.service.price, unit: "$") %>
-                        </p>
-                    <% end %>
-                <% end %>
-            </p>
+      <p>
+        <%= @user.role == "client" ? "Client" : "Pet Sitter"  %>
+      </p>
+      <% if current_user.client? %>
+      <p>
+        <strong>Pets:</strong>
+        <% @user.pets.each do |pet| %>
+      <p>
+        - <%= pet.name %> | <%= pet.pet_type.pet_type_name %> | <%= pet.age %>
+      </p>
+      <% end %>
 
-            <p>
-                <strong>Reviews:</strong>
-                <% @user.reviews.each do |review| %>
-                    <p>
-                        <%= review.review %>
-                    </p>
-                <% end %>
-            </p>
-            <% end %>
+      </p>
+      <% end %>
+      <% if current_user.pet_sitter? %>
+      <p>
+        <strong>Services:</strong>
+        <% @user.pet_sitter_services.each do |pet_sitter_service| %>
+        <% if pet_sitter_service.active %>
+      <p>
+        <%= pet_sitter_service.service.name %> | <%= pet_sitter_service.service.description %> | <%= number_to_currency(pet_sitter_service.service.price, unit: "$") %>
+      </p>
+      <% end %>
+      <% end %>
+      </p>
+
+      <p>
+        <strong>Reviews:</strong>
+        <% @user.reviews.each do |review| %>
+      <p>
+        <%= review.review %>
+      </p>
+      <% end %>
+      </p>
+      <% end %>
 
 
-        </div>
-        <%
-=begin%>
-        <div class="col-md-6">
-            <%= image_tag @user.picture, class:"show-picture" %>
-        </div>
-        <%
-=end%>
     </div>
+    <%
+=begin%>
+    <div class="col-md-6">
+      <%= image_tag @user.picture, class:"show-picture" %>
+    </div>
+    <%
+=end%>
+  </div>
 
 
 </div>
 
 <%= link_to 'Back', root_path ,class:"btn btn-outline-primary btn-sm"%> |
-<%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-outline-primary btn-sm"%> | 
+<%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-outline-primary btn-sm"%> |
 <%= link_to 'Pets', pets_path, class:"btn btn-outline-success btn-sm" %> |
 <%= link_to 'Add new pet', new_pet_path, class:"card-link btn btn-outline-success btn-sm" %> |
 <%= link_to 'Leave review', orders_path, class:" btn btn-outline-primary btn-sm" %> |
 <%= link_to 'Delete profile', root_path, class:"card-link btn btn-outline-danger btn-sm" %>
-
-

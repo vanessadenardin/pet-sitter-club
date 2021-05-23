@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :pets, dependent: :destroy, foreign_key: 'client_id'
   has_many :reviews, dependent: :destroy, foreign_key: 'pet_sitter_id'
 
@@ -18,9 +18,10 @@ class User < ApplicationRecord
   # some_user.ability.can? :read, @service
   # delegate :can?, :cannot?, to: :ability
 
-  validates :name, presence: true, on: :account_setup
-  validates :email, uniqueness: true, on: :account_setup
-  validates :post_code, presence: true, numericality: { only_integer: true }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, uniqueness: true
+  validates :post_code, presence: true
 
   def admin?
 

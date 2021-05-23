@@ -1,7 +1,13 @@
 class Service < ApplicationRecord
   has_many :pet_sitter_services, foreign_key: "service_id"
   # has_many :users, through: :pet_sitter_services, foreign_key: 'pet_sitter_id'
+  def update_active(active)
+    @active = active
+  end
 
+  def active?
+    @active
+  end
 
 
   # validates :name, presence: true, length: { minimum: 2 }

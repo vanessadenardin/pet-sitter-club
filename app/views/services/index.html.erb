@@ -13,8 +13,11 @@
             <% if current_user.client? %>
                 <%= link_to 'Find a pet sitter for your pur-friend', service_path(service.id), class:"card-link btn btn-outline-primary btn-sm" %>
             <% else %>
-                <%= button_to 'Add', add_service_path(service), method: 'post', params: { service_id: 2 }, class:'card-link btn btn-primary btn-sm' %>
-                <%= button_to 'Remove', remove_service_path(service), method: 'post', params: { service_id: 2 }, class:'card-link btn btn-danger btn-sm' %>
+                <% if service.active? %>
+                <%= button_to 'Remove', remove_service_path, method: 'post', params: { service_id: service.id }, class:'card-link btn btn-danger btn-sm' %>
+                <% else %>
+                <%= button_to 'Add', add_service_path, method: 'post', params: { service_id: service.id }, class:'card-link btn btn-primary btn-sm' %>
+                <% end %>
             <% end %>
 
             <% if current_user.admin? %>

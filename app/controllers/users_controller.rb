@@ -5,10 +5,6 @@ class UsersController < ApplicationController
 
         @user = User.find(current_user.id)
         # p @user.pet_sitter_services.joins(:service)
-        @user.pet_sitter_services.each do |service|
-        end
-        @user.reviews.each do |review|
-        end
     end
 
     def delete
