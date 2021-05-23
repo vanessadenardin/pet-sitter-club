@@ -4,5 +4,5 @@ class Review < ApplicationRecord
   has_one :order
 
   # validates :review
-  # validates :order, presence: true
+  validates :order, presence: true
 end

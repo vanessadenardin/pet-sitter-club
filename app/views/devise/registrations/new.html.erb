@@ -23,15 +23,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :abn,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "abn" }%>
-    <%= f.input :about,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "about" }%>
-    <%= f.check_box :role %> 
+    <%= f.collection_radio_buttons :role, [:name => "client", :id => 1}, {:name => "pet_sitter", :id => 2}], :id, :name %> 
   <div class="form-actions">
     <%= f.button :submit, "Sign up", class:"btn btn-success my-2 my-sm-0 gap-2" %>
   </div>

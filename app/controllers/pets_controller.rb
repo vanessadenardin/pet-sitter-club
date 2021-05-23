@@ -19,7 +19,6 @@ class PetsController < ApplicationController
   end
 
   def create
-
     @pet = current_user.pets.new(pets_params)
     if @pet.save
       redirect_to profile_path

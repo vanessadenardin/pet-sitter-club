@@ -1,6 +1,8 @@
 class OrderService < ApplicationRecord
-    has_many :pet_sitter_services
-    has_many :services, through: :pet_sitter_services
+    has_one :pet_sitter_service, foreign_key: "id"
+    # with below I can get OrderService.service instead of
+    # OrderService.pet_sitter_service.service
+    has_one :service, through: :pet_sitter_service
+
     belongs_to :order
-    belongs_to :pet_sitter_service
 end

@@ -15,10 +15,10 @@ class PetSittersController < ApplicationController
 
         @user = User.find(params[:id])
         # p @user.pet_sitter_services.joins(:service)
-        @user.pet_sitter_services.each do |service|
-        end
-        @user.reviews.each do |review|
-        end
+        # @user.pet_sitter_services.each do |service|
+        # end
+        # @user.reviews.each do |review|
+        # end
     end
 
     def edit

@@ -18,10 +18,10 @@ class User < ApplicationRecord
   # some_user.ability.can? :read, @service
   # delegate :can?, :cannot?, to: :ability
 
-  validates :name, presence: true, length: { minimum: 2 }, on: :account_setup
+  validates :name, presence: true, on: :account_setup
   validates :email, uniqueness: true, on: :account_setup
   validates :post_code, presence: true, numericality: { only_integer: true }
-  
+
   def admin?
 
     admin
@@ -39,5 +39,11 @@ class User < ApplicationRecord
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def review_ratings
+    total = reviews.inject(0) { |sum, review| sum + review.rating }
+    total / reviews.count
+
   end
 end

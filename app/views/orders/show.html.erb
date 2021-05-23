@@ -1,35 +1,55 @@
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4"><%= @order.id %></h1>
-        <p class="lead"><%= @order.date %></p>
-        <% if current_user.client? %>
-          <p class="lead"><%= @order.client.name %></p>
-        <% else %>
-          <p class="lead"><%= @order.pet_sitter.name %></p>
-        <% end %>
-    </div>
-    
-    <h1 class="display-4">Services: </h1>
-    <div class="container">
-      <% @order.order_services.each do |order_services| %>
-        <p class="lead"><%= order_services.service.name %></p>
-        <p class="lead"><%= order_services.price %></p>
-      <% end %>
-    </div>
+  <div class="container">
+    <p class="lead"><strong>Order Number:</strong> <%= @order.id %></p>
+    <p class="lead"><strong>Date:</strong> <%= @order.date %></p>
+    <p class="lead"><strong>Client:</strong> <%= @order.client.name %></p>
+    <p class="lead"><strong>Pet Sitter:</strong> <%= @order.pet_sitter.name %></p>
+  </div>
 
-    <h1 class="display-4">Review: </h1>
-    <div class="container">
-      <% if @order.review %>
-        <p class="lead"><%= @order.review.review %></p>
-      <% else %>
-        <%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-md" %> 
-      <% end %>
+  <h1 class="display-4">Services: </h1>
+  <div class="container">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order.order_services.each do |order_service| %>
+            <tr>
+              <td>
+                <%= order_service.service.name %>
+              </td>
+              <td>
+                <%= number_to_currency(order_service.service.price, unit: "$") %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <p class="lead"><strong>Total:</strong> <%= number_to_currency(@order.total, unit: "$") %></p>
+      </div>
     </div>
+  </div>
 
-    
+  <h1 class="display-4">Review: </h1>
+  <div class="container">
+    <% if @order.review %>
+    <p class="lead"><%= @order.review.review %></p>
+    <% else %>
+      <% if current_user.client? %>
+      <%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-md" %>
+      <% end%>
+    <% end %>
+  </div>
+
+
 </div>
 <div class="mx-auto" style="width: 200px;">
-    <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
-    <%= link_to 'Back', services_path, class:" btn btn-outline-primary btn-sm" %> |
-    <%= link_to 'Place order', service_path, class:" btn btn-outline-success btn-sm" %>
+  <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+  <%= link_to 'Back', orders_path, class:" btn btn-outline-primary btn-sm" %> |
+  <%= link_to 'Place order', service_path, class:" btn btn-outline-success btn-sm" %>
 </div>

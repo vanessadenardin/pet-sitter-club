@@ -5,6 +5,6 @@ class Pet < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :age, numericality: { only_integer: true }
-  validates :pet_type, presence: true
-  validates :observations, length: { is: 5 }, allow_blank: true
+  validates :pet_types_id, presence: true
+  validates :observations, length: { minimum: 3 }, allow_blank: true
 end

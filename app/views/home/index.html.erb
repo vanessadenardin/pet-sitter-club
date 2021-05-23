@@ -4,15 +4,13 @@
     <hr class="my-4">
     <p>This is a marketplace app created by Vanessa Denardin.</p>
     <p class="lead">
-    <%= link_to 'My profile', profile_path ,class:" btn btn-primary btn-lg"%>
-    <%= link_to 'Pet Sitters', pet_sitters_path, class:" btn btn-primary btn-lg" %> 
+    <%= link_to 'My profile', profile_path ,class:" btn btn-primary btn-lg"%> 
+    <%= link_to 'Pet Sitters', pet_sitters_path, class:" btn btn-primary btn-lg" %>
     <%= link_to 'Services', services_path, class:"btn btn-primary btn-lg" %> 
     <%= link_to 'Orders', orders_path, class:"btn btn-primary btn-lg" %>
-    <%= link_to 'Log in', new_user_session_path, class:"btn btn-primary btn-lg" %>
-    <%= link_to 'Leave a review', leave_review_path, class:"btn btn-primary btn-lg" %>
 </p>
 </div>
-
+<div class="card m-3 drone-card" style="width: 18rem;">
     <div class="carousel slide active" data-ride="carousel">
 
     <ol class="carousel-indicators">
@@ -20,6 +18,13 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
+<%
+=begin%>
+ <%= link_to listing do %>
+<div class="card m-3 drone-card" style="width: 18rem;">
+<%= listing.images.attached? ? ( image_tag listing.images.first ) : ( image_tag 'drone_image.jpg', class:'card-img-top', alt:'image of a drone' ) %> 
+<%
+=end%>
         <div class="carousel-inner">
         <div class="carousel-item active">
         <img class="d-block w-100" src="..." alt="First slide">

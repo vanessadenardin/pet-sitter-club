@@ -1,0 +1,36 @@
+<h1>We welcome your feedback.</h1>
+
+<p>Please submit the form below to let us know what you think or alert us to any problems you are having with The Pet Sitter Club.</p>
+
+<h2>Leave your review here</h2>
+
+<%= simple_form_for @review do |f| %>
+  <% if current_user? %>
+    <div>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+  <% end %>
+
+  <div>
+      <%= f.label :rating %><br>
+      <%= f.text_field :rating %>
+  </div>
+  <div> 
+    <%= f.label :review %><br>
+    <%= f.text_area :review %>
+
+    <% if local_assigns.has_key? :status_msg %>
+      <p><%= status_msg %></p>
+    <% end %>
+  </div>
+  <div>
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
