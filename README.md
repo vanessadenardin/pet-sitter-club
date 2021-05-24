@@ -67,11 +67,15 @@ The target audience of this app is anyone who has a pet at home or is interested
 
 ## 6. User Stories
 
+- **As admin**
+
 - As the application admin I want to check all clients registered in the application to analyse the website performance
 
 - As the application admin I want to check all orders placed in the last month to analyse the website success
 
 - As the application admin I want to check all new pet sitters registered to analyse how the application usage is spreading
+
+- **As pet sitter**
 
 - As a pet sitter I want to create an account to offer my services in my region
 
@@ -82,6 +86,8 @@ The target audience of this app is anyone who has a pet at home or is interested
 - As a pet sitter I want to check all reviews received in the last month
 
 - As a pet sitter I want to add pictures of all my clients’ pets while performing my services
+
+- **As client**
 
 - As a client I want to register my pets to hire the adequate pet sitter for the service
 

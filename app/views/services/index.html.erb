@@ -3,12 +3,11 @@
 <%= link_to 'Add service', new_service_path, class:"card-link btn btn-primary btn-lg" %>
 <% end %>
 
-
 <% @services.each do |service| %>
-<div class="card border-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header bg-transparent border-secondary"><%= service.name %></div>
-  <div class="card-header bg-transparent border-secondary"><%= service.description %></div>
-  <div class="card-header bg-transparent border-secondary"><%= number_to_currency(service.price, unit: "$") %></div>
+<div class="card border-info w-75 d-inline-block rounded" style="max-width: 25rem;" >
+  <div class="card-header bg-transparent border-secondary text-center text-capitalize font-weight-bold"><%= service.name %></div>
+  <div class="card-header bg-transparent border-secondary text-justify text-capitalize"><%= service.description %></div>
+  <div class="card-header bg-transparent border-secondary text-center"><%= number_to_currency(service.price, unit: "$") %></div>
   <% if user_signed_in? %>
   <div class="card-body">
     <% if current_user.client? %>
