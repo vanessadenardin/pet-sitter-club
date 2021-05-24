@@ -141,6 +141,46 @@ As features available are:
 
 ## 10. Wireframes
 
+- Homepage available publicly
+
+![Public homepage](docs/public-homepage.png)
+
+- Page for website log in
+
+![Log in page](docs/login.png)
+
+- Homepage available for a user loged in
+
+![Homepage for a loged in user](docs/homepage.png)
+
+- Profile page
+
+![Profile page](docs/profile.png)
+
+- Page with pets information
+
+![Pets page](docs/pets.png)
+
+- Page with form to add new pet
+
+![Add new pet page](docs/add-new-pet.png)
+
+- List of pet sitters available in the website
+
+![Page with a pet sitters list](docs/pet-sitters.png)
+
+- Pet sitter profile for client
+
+![Pet sitter profile](docs/pet-sitter-id.png)
+
+- Service's list available in the website
+
+![Services list](docs/services.png)
+
+- Orders page
+
+![Orders page](docs/orders.png)
+
 ---
 
 ## 11. ERD
