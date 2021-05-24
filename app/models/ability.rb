@@ -8,12 +8,24 @@ class Ability
     can :look, Service
     can :read, User
     # can :read, User, id: user.id
-    can :read, Order, client_id: user.id
-    can :read, Order, pet_sitter_id: user.id
 
+    can :read, Order, client_id: user.id
+    can :create, Order, client_id: user.id
+    can :read, Order, pet_sitter_id: user.id
     # if user.client?
-    #   can :read, Pet, client_id: user.id
+    #   can :manage, Pet, client_id: user.id
     # end
+
+
+    
+    # if user.client?
+    #   can [:index, :update, :create], User
+    # end
+    can :manage, Pet, client_id: user.id
+    # can :create, Pet, client_id: user.id
+
+
+
 
 
 

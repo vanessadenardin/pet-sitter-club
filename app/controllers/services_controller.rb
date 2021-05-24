@@ -5,6 +5,7 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:edit, :update]
   
   def index
+
     @services = Service.all
     return unless user_signed_in? && current_user.pet_sitter?
 

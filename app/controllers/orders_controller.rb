@@ -15,8 +15,24 @@ class OrdersController < ApplicationController
         @order = Order.find(params[:id])
     end
 
+    def new
+
+        @order = Order.new
+    end
+    
+    def create
+    
+        @order = current_user.order.new(order_params)
+            if @order.save
+                redirect_to order_path
+            else
+                render :new
+            end
+
+    end
+
     def destroy
-        
+
         @order.destroy
         flash[:alert] = 'Successfully deleted!'
         redirect_to root_path
@@ -49,5 +65,12 @@ class OrdersController < ApplicationController
 
     #     # format.html { render :review, locals: { status_msg: form_status_msg, review: params} }
     # end
+
+    private
+
+    def orders_params
+    
+        params.require(:order).permit(:client_id, :pet_sitter_id, :date, :status)
+    end
     
 end

@@ -2,8 +2,8 @@ class UsersController < ApplicationController
     # load_and_authorize_resource
 
     def show
-
         @user = User.find(current_user.id)
+        p @user
         # p @user.pet_sitter_services.joins(:service)
     end
 

@@ -41,7 +41,7 @@
     <p class="lead"><%= @order.review.review %></p>
     <% else %>
       <% if current_user.client? %>
-      <%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-md" %>
+        <%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-md" %>
       <% end%>
     <% end %>
   </div>
@@ -50,6 +50,5 @@
 </div>
 <div class="mx-auto" style="width: 200px;">
   <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
-  <%= link_to 'Back', orders_path, class:" btn btn-outline-primary btn-sm" %> |
-  <%= link_to 'Place order', service_path, class:" btn btn-outline-success btn-sm" %>
+  <%= link_to 'Back', orders_path, class:" btn btn-outline-primary btn-sm" %>
 </div>
