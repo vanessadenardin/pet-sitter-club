@@ -15,9 +15,10 @@ class Ability
     # if user.client?
     #   can :manage, Pet, client_id: user.id
     # end
+    can :manage, :all
 
 
-    
+
     # if user.client?
     #   can [:index, :update, :create], User
     # end

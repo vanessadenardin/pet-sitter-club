@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   # get "/profile", to: "profile#show"
 
-  resources :orders
-  # get "/orders", to: "orders#index"
 
   resources :pet_sitters
   post 'add_service', to: 'pet_sitters#add_service', as: 'add_service'
@@ -28,6 +26,9 @@ Rails.application.routes.draw do
 
   resources :pets
 
-  post 'review', to: 'orders#leave_review', as: 'leave_review'
+  resources :orders
+  # get "/orders", to: "orders#index"
+  # resources :reviews
+  # post 'review', to: 'orders#leave_review', as: 'leave_review'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

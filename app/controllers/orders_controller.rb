@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    load_and_authorize_resource
+    # load_and_authorize_resource param_method: orders_params
 
     def index
 
@@ -16,18 +16,31 @@ class OrdersController < ApplicationController
     end
 
     def new
-
         @order = Order.new
+        # @pet_sitters = []
+        if !params[:pet_sitter_id].blank?
+            @pet_sitter = User.find(params[:pet_sitter_id])
+            @order.pet_sitter = @pet_sitter
+        end
+
+        if !params[:search_pet_sitter].blank?
+            @pet_sitters = User.where("role = 'pet_sitter' AND (UPPER(first_name) LIKE :search OR UPPER(last_name) LIKE :search)", search: "%#{params[:search_pet_sitter].upcase}%")
+        end
     end
     
     def create
-    
-        @order = current_user.order.new(order_params)
-            if @order.save
-                redirect_to order_path
-            else
-                render :new
+        
+        @order = current_user.orders.new(orders_params)
+        params[:services].each do |key, value|
+            if value.to_s.downcase == 'true'
+                @order.order_services.new(pet_sitter_service_id: key.to_s, completed: false)
             end
+        end
+        if @order.save
+            redirect_to orders_path
+        else
+            render :new
+        end
 
     end
 
@@ -70,7 +83,7 @@ class OrdersController < ApplicationController
 
     def orders_params
     
-        params.require(:order).permit(:client_id, :pet_sitter_id, :date, :status)
+        params.require(:order).permit(:client_id, :pet_sitter_id, :date, :status, :search_pet_sitter)
     end
     
 end

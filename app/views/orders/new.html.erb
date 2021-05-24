@@ -1,0 +1,88 @@
+<div class="jumbotron jumbotron-fluid">
+  <% if !@pet_sitter %>
+  <%= form_tag new_order_path, :method => 'get' do %>
+  <%= text_field_tag :search_pet_sitter, params[:search_pet_sitter] %>
+  <%= submit_tag "Search Pet Sitter" %>
+  <% end %>
+  <% if !@pet_sitters.nil? %>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pet_sitters.each do |pet_sitter| %>
+          <tr>
+            <th scope="row"><%= pet_sitter.name %></th>
+            <td><%= link_to 'Select', new_order_path(:pet_sitter_id => pet_sitter.id), class:"btn btn-outline-primary btn-sm" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+  <% if @pet_sitter %>
+  <p class="lead">Client: <%= current_user.name %></p>
+  <p class="lead">Pet Sitter: <%= @order.pet_sitter.name %></p>
+  <%= simple_form_for @order do |f| %>
+  <%= hidden_field_tag "order[client_id]", "#{current_user.id}" %>
+  <%= hidden_field_tag "order[pet_sitter_id]", "#{@order.pet_sitter.id}" %>
+  <%= f.input :date, as: :string, input_html: {type: :date} %>
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Price</th>
+            <th>To do</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pet_sitter.pet_sitter_services.each do |pet_sitter_service| %>
+          <%
+=begin%>
+          <f.>
+            <%
+=end%>
+            <tr>
+              <td><%= pet_sitter_service.service.name %></td>
+              <td><%= number_to_currency(pet_sitter_service.service.price, unit: '$') %></td>
+              <td>
+                <%= hidden_field_tag "services[#{pet_sitter_service.id}]", false %>
+                <%= check_box_tag "services[#{pet_sitter_service.id}]", true %>
+                <%
+=begin%>
+                <input type="checkbox" checked autocomplete="off" name="order[<%service.id%>][]">
+                <%
+=end%>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= f.button :submit, class:"card-link btn btn-success btn-sm"  %>
+  <% end %>
+  <div class="container">
+    <%
+=begin%>
+    <p class="lead"><strong>Date:</strong> <%= Time.new %></p>
+    <%
+=end%>
+  </div>
+
+
+  <% end %>
+</div>
+<div class="mx-auto" style="width: 200px;">
+  <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+  <%= link_to 'Back', orders_path, class:" btn btn-outline-primary btn-sm" %>
+</div>

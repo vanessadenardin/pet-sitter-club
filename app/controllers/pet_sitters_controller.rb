@@ -1,9 +1,10 @@
 class PetSittersController < ApplicationController
-    load_and_authorize_resource
+    # load_and_authorize_resource
     
     def index
         authorize! :index, User
         @pet_sitters = User.where(role: "pet_sitter")
+
     end
 
     def show

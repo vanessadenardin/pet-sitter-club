@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   has_many :order_services, dependent: :destroy
   has_many :pet_sitter_services, through: :order_services
+  has_many :services, through: :pet_sitter_services
 
   has_one :payment, dependent: :destroy
   has_one :review
