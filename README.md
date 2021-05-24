@@ -15,45 +15,29 @@
 
 ## Table of Contents
 
-## [1. Git Hub repository](#1.-Git-Hub-repository)
-
-## [2. Website link](#2.-Website-link)
-
-## [3. Purpose](3.-Purpose)
-
-## [4. Problem/ Solve](4.-Problem-/-Solve)
-
-## [5. Target Audience](5.-Target-Audience)
-
-## [6. User Stories](6.-User-Stories)
-
-## [7. Functionality / features](7.-Functionality-/-features)
-
-## [8. Sitemap](8.-Sitemap)
-
-## [9. Tech stack](9.-Tech-stack)
-
-## [10. Wireframes](10.-Wireframes)
-
-## [11. ERD](11.-ERD)
-
-## [12. High-level components (abstractions)](12.-High-level-components-(abstractions))
-
-## [13. Third party services](13.-Third-party-services)
-
-## [14. The Pet Sitter Club models in terms of the relationships (active record associations)](14.-The-Pet-Sitter-Club-models-in-terms-of-the-relationships-(active-record-associations))
-
-## [15. The database relations to be implemented](15.-The-database-relations-to-be-implemented)
-
-## [16. Database schema design](16.-Database-schema-design)
-
-## [17. Tasks allocation and tracking](17.-Tasks-allocation-and-tracking)
+- [1. Github repository](#1.-github-repository)
+- [2. Website](#2.-Website)
+- [3. Purpose](#3.-Purpose)
+- [4. Problem/ Solve](#4.-Problem-/-Solve)
+- [5. Target Audience](#5.-Target-Audience)
+- [6. User Stories](#6.-User-Stories)
+- [7. Functionality / features](#7.-Functionality-/-features)
+- [8. Sitemap](#8.-Sitemap)
+- [9. Tech stack](#9.-Tech-stack)
+- [10. Wireframes](#10.-Wireframes)
+- [11. ERD](#11.-ERD)
+- [12. High-level components (abstractions)](#12.-High-level-components-(abstractions))
+- [13. Third party services](#13.-Third-party-services)
+- [14. The Pet Sitter Club models in terms of the relationships (active record associations)](#14.-The-Pet-Sitter-Club-models-in-terms-of-the-relationships-(active-record-associations))
+- [15. The database relations to be implemented](#15.-The-database-relations-to-be-implemented)
+- [16. Database schema design](#16.-Database-schema-design)
+- [17. Tasks allocation and tracking](#17.-Tasks-allocation-and-tracking)
 
 ---
 
-## 1. Git Repository
+## 1. Github Repository
 
-[Git Hub repository link](#https://github.com/vanessadenardin/pet-sitter-club)
+[Github repository link](#https://github.com/vanessadenardin/pet-sitter-club)
 
 ---
 
@@ -65,7 +49,7 @@
 
 ## 3. Purpose
 
-The purpose of the 'Pet Sitter Club' is to bring community members together to provide pet care services in your neighbourhood. Although it is simple, considering only dogs and cats as pets at home, it seeks to focus the user experience on the aspect of exchange between users (pet sitter and client through service hiring, client and client through assessments).
+The purpose of the 'Pet Sitter Club' is to bring community members together to provide pet care services in your neighbourhood. Although it is simple, considering only dogs and cats as pets at home, it seeks to focus the user experience on the aspect of exchange between users (pet sitter and client through service hiring, client and client through reviews).
 
 ## 4. Problem / Solve
 
@@ -118,7 +102,7 @@ As functionalities present on the website are:
 <!-- - **In-site search** to give a better explanation about the service offered -->
 - **Photo gallery** to insert in the profile of the pet as a customer and add the profile of the pet sitter to humanize the contact between customer and service provider, in addition to illustrating the services offered throughout the app
 <!-- - Search ??? -->
-- **Forms** to sign up, edit profile, add and edit pet as a client, leave a review as a client
+- **Forms** to sign up, edit profile, add and edit pet as a client, leave a review as a client, add seervices as a admin
 <!-- - **Event calendar** to book pet care when it's needed -->
 
 As features available are:
@@ -131,7 +115,7 @@ As features available are:
 - **Images** to provide some sort of visual to meet pet sitters available and to the pet sitters to prepare for the fur-clients before service.
 - **Internal links** to encourage user stay longer on the website, also to advertise relevant content.
 - **Customer reviews** include some previous client's experience after hiring services from a pet sitter that could be useful for potential customers.
-<!-- - Tabs and options -->
+- **Tabs** familiarizing the user with the app
 <!-- - **Social Media links** to approximate clients and company, making easier customers discover about a new promotion or any change in the company. -->
 - **Contact info** giving users a way to get in touch faster with the company for extra information or support.
 <!-- - **Contact form** is another way that customers can get in touch with the pet sitter to gather information. -->
@@ -141,7 +125,7 @@ As features available are:
 
 ## 8. Sitemap
 <!-- Não funciona -->
-![Sitemap](sitemap.png)
+![Sitemap](docs/sitemap.png)
 
 ---
 
@@ -156,12 +140,12 @@ As features available are:
 ## 11. ERD
 
 <!-- não funciona -->
-![Initial ERD](data-diagram1.png)
+![Initial ERD](docs/data-diagram1.png)
 
 The initial idea when designing the ERD diagram was to have 9 tables being the so-called `roles` that would identify the type of user of the application, which could be admin, client and pet sitter. However, after talking to the educator and carrying out some research, it was decided how to transform the table, previously related to the table `users` in the same column, keeping the name `role`.
 
 <!-- não funciona -->
-![Initial ERD](data-diagram3.png)
+![Initial ERD](docs/data-diagram3.png)
 
 During the coding path, some necessary modifications were made in the nomenclature and in the associations between the tables. For example, the table `services` is no longer associated with the table `users`, in its place, the table `pet_sitter_services` has been added and works as a junction table between `users` and `services`. In addition, `pet_sitter_services` is associated with the table `order_services`.
 
@@ -200,23 +184,26 @@ Below are some screenshots of how the application code was developed, starting w
 After the idea was approved, setting up a Git repository, designing the first ERD and a site map to start the coding process were the steps that followed.
 
 <!-- não funciona -->
-![First Trello board screenshot](Trello1.png)
+![First Trello board screenshot](docs/Trello1.png)
 
 <!-- não funciona -->
-![Trello board screenshot 2](Trello2.png)
+![Trello board screenshot 2](docs/Trello2.png)
 
 Then, the following steps were divided in order to respond to all the requirements of the evaluation respecting the sitemap and the wireframes already developed.
 
 From there, the tasks allocated were separated by pages in the application or important methods to be implemented on each page, in addition to the layout features of each page.
 
 <!-- não funciona -->
-![Trello board screenshot 3](Trello3.png)
+![Trello board screenshot 3](docs/Trello3.png)
 
 <!-- não funciona -->
-![Trello board screenshot 4](Trello4.png)
+![Trello board screenshot 4](docs/Trello4.png)
 
 <!-- não funciona -->
-![Trello board screenshot 5](Trello5.png)
+![Trello board screenshot 5](docs/Trello5.png)
 
 <!-- não funciona -->
-![Trello board screenshot 6](Trello6.png)
+![Trello board screenshot 6](docs/Trello6.png)
+
+<!-- não funciona -->
+![Trello board screenshot 7](docs/Trello7.png)
