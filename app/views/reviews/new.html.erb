@@ -1,0 +1,24 @@
+<h1>We welcome your feedback.</h1>
+
+<p>Please submit the form below to let us know what you think or alert us to any problems you are having with The Pet Sitter Club.</p>
+
+<h2>Leave your review here</h2>
+
+<%= simple_form_for @review do |f| %>
+
+<div>
+  <%= f.input :rating, input_html: { min: 0, max: 5 } %>
+</div>
+<div>
+  <%= f.label :review %><br>
+  <%= f.text_area :review %>
+</div>
+<%= f.input :order_id, :as => :hidden, :input_html => { :value => @review.order_id } %>
+<%= f.input :pet_sitter_id, :as => :hidden, :input_html => { :value => @review.pet_sitter_id } %>
+<%= f.input :client_id, :as => :hidden, :input_html => { :value => @review.client_id } %>
+<%= f.input :date, :as => :hidden, :input_html => { :value => @review.date } %>
+
+<div>
+  <%= f.button :submit %>
+</div>
+<% end %>
