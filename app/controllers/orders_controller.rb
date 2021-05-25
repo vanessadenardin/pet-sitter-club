@@ -51,12 +51,12 @@ class OrdersController < ApplicationController
         redirect_to root_path
     end
     
-    # def leave_review
+    def leave_review
 
-    #     respond_to do |format|
-    #         format.html { render orders_path }
-    #     end  
-    # end
+        respond_to do |format|
+            format.html { render orders_path }
+        end  
+    end
 
     # def form_complete
 

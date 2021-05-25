@@ -41,7 +41,7 @@
     <p class="lead"><%= @order.review.review %></p>
     <% else %>
       <% if current_user.client? %>
-        <%= link_to 'Leave a review', orders_path, class:"btn btn-primary btn-md" %>
+        <%= link_to 'Leave a review', new_review_path("order_id" => @order.id, "pet_sitter_id" => @order.pet_sitter_id), class:"btn btn-primary btn-md" %>
       <% end%>
     <% end %>
   </div>
