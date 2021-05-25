@@ -1,6 +1,7 @@
 class Service < ApplicationRecord
   has_many :pet_sitter_services, foreign_key: 'service_id'
   # has_many :users, through: :pet_sitter_services, foreign_key: 'pet_sitter_id'
+  has_one_attached :image
 
   def update_active(active)
     @active = active

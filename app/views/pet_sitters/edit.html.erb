@@ -9,5 +9,6 @@
 <%= simple_form_for @pet_sitter_service do |f| %>
     <%= f.input :price %>
     <%= f.collection_radio_buttons :active, PetSitterService.all, :id, :pet_sitter_service %>
+    <%= f.file_field :image, accept: 'image/png, image/jpg, image/jpeg, image/gif', multiple: true %>
     <%= f.button :submit, class:"card-link btn btn-success btn-sm"  %>
 <% end %>

@@ -8,13 +8,13 @@
 begin
     pet_sitter = User.find(1)
 rescue
-    pet_sitter = User.create(email: "v@v.com", first_name: "Vanessa", last_name: "Denardin", password: "vanessa", password_confirmation: "vanessa", role: "pet_sitter")
+    pet_sitter = User.create(email: "v@v.com", first_name: "Vanessa", last_name: "Denardin", password: "vanessa", password_confirmation: "vanessa", role: "pet_sitter", post_code: 3000)
 end
 
 begin
     client = User.find(2)
 rescue => exception
-    client = User.create(email: "c@c.com", first_name: "Caio", last_name: "Trevisan", password: "caio123", password_confirmation: "caio123", role: "client") 
+    client = User.create(email: "c@c.com", first_name: "Caio", last_name: "Trevisan", password: "caio123", password_confirmation: "caio123", role: "client", post_code: 3000) 
 end
 
 pet_type = PetType.create(pet_type_name: "cat")

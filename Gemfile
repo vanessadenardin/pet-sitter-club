@@ -67,3 +67,5 @@ gem "devise", "~> 4.8"
 gem 'cancancan'
 
 gem 'pg'
+
+gem 'aws-sdk-s3'

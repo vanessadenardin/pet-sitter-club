@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_071207) do
   create_table "payments", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.string "payment_reference"
-    t.decimal "total_amount", precision: 10, scale: 2
+    t.decimal "total_amount", precision: 5, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_payments_on_order_id"

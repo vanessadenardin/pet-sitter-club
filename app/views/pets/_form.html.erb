@@ -9,5 +9,16 @@
     <%= f.input :age %>
     <%= f.input :observations %>
     <%= f.collection_radio_buttons :pet_types_id, PetType.all, :id, :pet_type_name %>
+    <%= f.label "Pet photo" %>
+    <%= f.file_field :image, accept: 'image/png, image/jpg, image/jpeg, image/gif', multiple: false %>
+    <%
+=begin%>
+ <% if pet.images.attached? %>
+        <%= image_tag pet.image, class: "card-img-top"%>
+    <% else %>
+        <% image_tag "docs/nick-fewings.jpg" %>
+    <% end %> 
+<%
+=end%>
     <%= f.button :submit, class:"card-link btn btn-success btn-sm"  %>
 <% end %>

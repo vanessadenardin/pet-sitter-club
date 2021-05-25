@@ -211,9 +211,49 @@ The columns were also moved between the tables to facilitate the consultation of
 
 ## 14. The Pet Sitter Club models in terms of the relationships (active record associations)
 
+- **User model**
+
+A user `has_many pets`, a pet `belongs_to user` as foreign key `client_id`.
+
+A pet `belongs_to user` as foreing key `client_id`.
+
+A pet `has_one_attached image`.
+
+A pet `belongs_to pet_type` as foreing key `pet_types_id`.
+
+A pet type `has_many pets`, as foreing key `pet_types_id`.
+
+A review `has_one order`, a user `has_many reviews`, an review `belongs_to user` as foreign key `client_id` and also `belongs_to user`as foreign key `pet_sitter_id`.
+
+A user `has_many pet_sitter_services`, a pet sitter service `belongs_to user`, as foreing key `pet_sitter_id`.
+
+A user `has_many services`, a service `has_many pet_sitter_services` as  foreign key `service_id`.
+
+A pet sitter service `belongs_to service`.
+
+A user `has_one_attached image`.
+
+A service `has_one_attached image`.
+
+A order `has_many order_services`, a order service `belongs_to order`.
+
+<!-- rever model pois user está como :client e :pet_sitter -->
+<!-- A order `belongs_to user` as foreign key `pet_sitter_id` and `client_id`. -->
+
+A order `has_many pet_sitter_service` through `order_services`, a pet sitter service `belongs_to order_service`.
+
+A order `has_many services` through `pet_sitter_services`.
+
+A oder service `has_one service` through `pet_sitter_service` and `belongs_to order`.
+
+A order `has_one payment`, a payment `belongs_to order`.
+
 ---
 
 ## 15. The database relations to be implemented
+
+Database relationships are implemented using foreign keys in relationships that use `belongs_to` in the relationship model.
+
 
 
 ---

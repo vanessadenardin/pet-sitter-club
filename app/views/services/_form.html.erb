@@ -7,5 +7,7 @@
 <%= simple_form_for @service do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
+    <%= f.label "Service photo" %>
+    <%= f.file_field :image, accept: 'image/png, image/jpg, image/jpeg, image/gif', multiple: false %>
     <%= f.button :submit, class:"card-link btn btn-success btn-sm"  %>
 <% end %>

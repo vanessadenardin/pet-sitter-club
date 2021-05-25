@@ -1,9 +1,8 @@
 class ServicesController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_service, only: [:edit, :update]
-  # has_many_attached :images
   
   def index
 
@@ -71,7 +70,7 @@ class ServicesController < ApplicationController
 
   def services_params
     
-    params.require(:service).permit(:name, :description)
+    params.require(:service).permit(:name, :description, :image)
   end
 
 end

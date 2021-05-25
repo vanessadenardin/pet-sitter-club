@@ -4,7 +4,7 @@
       <p id="notice"><%= notice %></p>
 
       <h1>PROFILE</h1>
-
+      <%= image_tag @user.image, class: "image" if @user.pet_sitter? && @user.image.attached? %>
       <p>
         <strong>Name:</strong>
         <%= @user.first_name %>
@@ -47,6 +47,7 @@
         <strong>Pets:</strong>
         <% @user.pets.each do |pet| %>
       <p>
+        <% image_tag pet.image if pet.image.attached? %>
         - <%= pet.name %> | <%= pet.pet_type.pet_type_name %> | <%= pet.age %>
       </p>
       <% end %>

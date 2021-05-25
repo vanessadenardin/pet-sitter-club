@@ -34,7 +34,6 @@ class PetsController < ApplicationController
   end
 
   def update
-
     if @pet.update(pets_params)
       redirect_to @pet
     else
@@ -64,7 +63,7 @@ class PetsController < ApplicationController
 
     def pets_params
 
-      params.require(:pet).permit(:name, :age, :observations, :pet_types_id)
+      params.require(:pet).permit(:name, :age, :observations, :pet_types_id, :image)
     end
 
 end

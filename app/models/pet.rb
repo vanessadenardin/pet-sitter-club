@@ -1,6 +1,6 @@
 class Pet < ApplicationRecord
   belongs_to :user, foreign_key: 'client_id'
-  has_many_attached :images
+  has_one_attached :image
   belongs_to :pet_type, foreign_key: 'pet_types_id'
 
   validates :name, presence: true, length: { minimum: 2 }

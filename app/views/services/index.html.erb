@@ -4,7 +4,10 @@
 <% end %>
 
 <% @services.each do |service| %>
-<div class="card border-info w-75 d-inline-block rounded" style="max-width: 25rem;" >
+<div class="card border-info w-75 d-inline-block rounded" style="max-width: 25rem;">
+  <% if service.image.attached? %>
+  <div class="card-header bg-transparent border-secondary text-center text-capitalize font-weight-bold"><%= image_tag service.image, class: "image" %></div>
+  <% end %>
   <div class="card-header bg-transparent border-secondary text-center text-capitalize font-weight-bold"><%= service.name %></div>
   <div class="card-header bg-transparent border-secondary text-justify text-capitalize"><%= service.description %></div>
   <div class="card-header bg-transparent border-secondary text-center"><%= number_to_currency(service.price, unit: "$") %></div>

@@ -1,14 +1,11 @@
+<%= image_tag @service.image, class: "image" if @service.image.attached? %>
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4"><%= @service.name %></h1>
-        <p class="lead"><%= @service.description %></p>
-    </div>
+<div class="container">
+    <h1 class="display-4"><%= @service.name %></h1>
+    <p class="lead"><%= @service.description %></p>
+</div>
 </div>
 <div class="mx-auto" style="width: 200px;">
-    <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
-    <%= link_to 'Back', services_path, class:" btn btn-outline-primary btn-sm" %> |
+<%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+<%= link_to 'Back', services_path, class:" btn btn-outline-primary btn-sm" %> |
 </div>
-
-
-
-

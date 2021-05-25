@@ -30,9 +30,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "post_code" }%>
-
-
   <%= f.input :email, required: true, autofocus: true %>
+  <% if current_user.pet_sitter? %>
+  <%= f.label "Profile Picture" %>
+  <%= f.file_field :image, accept: 'image/png, image/jpg, image/jpeg, image/gif', multiple: false %>
+  <% end %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

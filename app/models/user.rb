@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   # some_user.ability.can? :read, @service
   # delegate :can?, :cannot?, to: :ability
+  has_one_attached :image
 
   validates :first_name, presence: true
   validates :last_name, presence: true
