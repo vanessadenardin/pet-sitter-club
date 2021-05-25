@@ -241,17 +241,14 @@ Then, the following steps were divided in order to respond to all the requiremen
 
 From there, the tasks allocated were separated by pages in the application or important methods to be implemented on each page, in addition to the layout features of each page.
 
-<!-- não funciona -->
 ![Trello board screenshot 3](docs/Trello3.png)
 
-<!-- não funciona -->
 ![Trello board screenshot 4](docs/Trello4.png)
 
-<!-- não funciona -->
 ![Trello board screenshot 5](docs/Trello5.png)
 
-<!-- não funciona -->
 ![Trello board screenshot 6](docs/Trello6.png)
 
-<!-- não funciona -->
 ![Trello board screenshot 7](docs/Trello7.png)
+
+![Trello board screenshot 8](docs/Trello8.png)
