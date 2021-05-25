@@ -125,7 +125,7 @@ As features available are:
 <!-- - **Social Media links** to approximate clients and company, making easier customers discover about a new promotion or any change in the company. -->
 - **Contact info** giving users a way to get in touch faster with the company for extra information or support.
 <!-- - **Contact form** is another way that customers can get in touch with the pet sitter to gather information. -->
-- **Questions & Answers** to help visitors to understand better about the service offered by the company and helping the visitors feel self-sufficient reducing the time awaiting for an answer.
+<!-- - **Questions & Answers** to help visitors to understand better about the service offered by the company and helping the visitors feel self-sufficient reducing the time awaiting for an answer. -->
 
 ---
 
@@ -178,6 +178,8 @@ As features available are:
 ![Services list](docs/services.png)
 
 - Orders page
+
+![Place order page](docs/new-order.png)
 
 ![Orders page](docs/orders.png)
 
