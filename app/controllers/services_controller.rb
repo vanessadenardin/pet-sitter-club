@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_service, only: [:edit, :update]
+  # has_many_attached :images
   
   def index
 

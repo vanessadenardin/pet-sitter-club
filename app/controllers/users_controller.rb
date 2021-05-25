@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     # load_and_authorize_resource
+    # has_many_attached :images
 
     def show
         @user = User.find(current_user.id)

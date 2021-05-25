@@ -4,54 +4,29 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
     alias_action :index, :to => :look
     can :look, Service
     can :read, User
-    # can :read, User, id: user.id
 
+    return unless user
+
+    can :edit, User, id: user.id
     can :read, Order, client_id: user.id
-    can :create, Order, client_id: user.id
     can :read, Order, pet_sitter_id: user.id
-    # if user.client?
-    #   can :manage, Pet, client_id: user.id
-    # end
-    can :manage, :all
-
-
-
-    # if user.client?
-    #   can [:index, :update, :create], User
-    # end
-    can :manage, Pet, client_id: user.id
-    # can :create, Pet, client_id: user.id
-
-
-
-
-
-
+    if user.role == 'pet_sitter'
+      can :edit, Order, pet_sitter_id: user.id
+      can :edit, OrderService
+      can :manage, PetSitterService, pet_sitter_id: user.id
+    elsif user.role == 'client'
+      can :manage, Pet, client_id: user.id
+      can :edit, Order, client_id: user.id
+    end
 
     return unless user.admin?
-      can :manage, :all
-    # can :update, Profile, id: current_user.id
-    # can :update, Service, pet_sitter_id: current_user.id
-    # can :manage, :all
+    can :manage, :all
 
     # Define abilities for the passed in user here. For example:
-    # if user.pet_sitter?
-    #   can :read, Order, pet_sitter_id: current_user.id
-    # elsif user.client?
-    #   can :read, Order, client_id: current_user.id
-    # elsif user.admin?
-    #   can :manage, :all
-    # end
-      # user ||= User.new # guest user (not logged in)
-      # if user.admin?
-      #   can :manage, :all
-      # else
-      #   can :read, :all
-      # end
-
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
