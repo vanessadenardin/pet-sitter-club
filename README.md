@@ -206,6 +206,11 @@ The columns were also moved between the tables to facilitate the consultation of
 ---
 
 ## 13. Third party services
+- AWS
+  - S3 Bucket
+  - IAM
+- Heroku
+- Github
 
 ---
 

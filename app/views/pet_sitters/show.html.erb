@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Learn more about pet sitter <%= @user.first_name %></h1>
-
+    <h1 class="display-4">Learn more about pet sitter <%= @user.name %></h1>
+    <%= image_tag @user.image, class: "image" if @user.image.attached? %>
     <p>
       <strong>Name:</strong>
       <%= @user.name %>
@@ -35,7 +35,7 @@
       <% end %>
       <% @user.reviews.each do |review| %>
     <p>
-      <%= review.review %> | <% @user.review_ratings.to_i.times do %>
+      <%= review.review %> | <% review.rating.to_i.times do %>
       <i class="fas fa-star"></i>
       <% end %>
     </p>

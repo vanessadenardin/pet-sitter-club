@@ -4,6 +4,7 @@
 
         <% @pets.each do |pet| %>
         <div class="card border-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header bg-transparent border-secondary"><%= image_tag pet.image, class: "image" if pet.image.attached? %></div>
             <div class="card-header bg-transparent border-secondary"><%= pet.name %></div>
             <div class="card-body text-secondary">
                 <h5 class="card-text"><%= pet.age %></h5>
