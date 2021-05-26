@@ -57,11 +57,30 @@ class OrdersController < ApplicationController
         end
     end
 
+    def complete_order_service
+        order_service = OrderService.find(params[:order_service_id])
+        order_service.completed = true
+        order_service.save
+
+        completed = true
+        order_service.order.order_services.each do |order_service|
+            if !order_service.completed
+                completed = false
+            end
+        end
+        if completed
+            order_service.order.status = true
+            order_service.order.save
+        end
+        
+        redirect_to order_path(order_service.order.id)
+    end
+
     private
 
     def orders_params
     
-        params.require(:order).permit(:client_id, :pet_sitter_id, :date, :status, :search_pet_sitter)
+        params.require(:order).permit(:client_id, :pet_sitter_id, :date, :status, :search_pet_sitter, :order_service_id)
     end
     
 end

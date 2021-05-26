@@ -12,4 +12,14 @@ class Order < ApplicationRecord
   def total
     order_services.inject(0) { |sum, order_service| sum + order_service.service.price }
   end
+
+  # def completed?
+  #   complete = true
+  #   order_services.each do |order_service|
+  #     if !order_service.completed
+  #       complete = false
+  #     end
+  #   end
+  #   complete
+  # end
 end

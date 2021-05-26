@@ -15,6 +15,7 @@
             <tr>
               <th>Name</th>
               <th>Price</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -25,6 +26,17 @@
               </td>
               <td>
                 <%= number_to_currency(order_service.service.price, unit: "$") %>
+              </td>
+              <td>
+                <% if order_service.completed %>
+                <span class="badge bg-success">COMPLETED</span>
+                <% else %>
+                <% if current_user.client? %>
+                <span class="badge bg-warning">IN PROGRESS</span>
+                <% else %>
+                <%= button_to 'Complete?', complete_order_service_path, method: 'post', params: { order_service_id: order_service.id }, class:" btn btn-outline-dark btn-sm" %> 
+                <% end %>
+                <% end %>
               </td>
             </tr>
             <% end %>
@@ -40,15 +52,14 @@
     <% if @order.review %>
     <p class="lead"><%= @order.review.review %></p>
     <% else %>
-      <% if current_user.client? %>
-        <%= link_to 'Leave a review', new_review_path("order_id" => @order.id, "pet_sitter_id" => @order.pet_sitter_id), class:"btn btn-primary btn-md" %>
-      <% end%>
+    <% if current_user.client? %>
+    <%= link_to 'Leave a review', new_review_path("order_id" => @order.id, "pet_sitter_id" => @order.pet_sitter_id), class:"btn btn-primary btn-md" %>
+    <% end%>
     <% end %>
   </div>
 
-<div class="mx-auto" style="width: 200px;">
-  <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
-  <%= link_to 'Back', orders_path, class:" btn btn-outline-success btn-sm" %>
+  <div class="mx-auto" style="width: 200px;">
+    <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+    <%= link_to 'Back', orders_path, class:" btn btn-outline-success btn-sm" %>
+  </div>
 </div>
-</div>
-

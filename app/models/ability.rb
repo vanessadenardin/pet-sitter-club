@@ -20,6 +20,7 @@ class Ability
       can :edit, Order, pet_sitter_id: user.id
       can :edit, OrderService
       can :manage, PetSitterService, pet_sitter_id: user.id
+      can :complete_order_service, Order, pet_sitter_id: user.id
     elsif user.client?
       can :manage, Pet, client_id: user.id
       can :edit, Order, client_id: user.id

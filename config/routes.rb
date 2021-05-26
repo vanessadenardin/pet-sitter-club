@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :pets
 
   resources :orders
+  post 'orders/complete_order_service', to: 'orders#complete_order_service', as: 'complete_order_service'
   # get "/orders", to: "orders#index"
   resources :reviews
   # post 'review', to: 'orders#leave_review', as: 'leave_review'

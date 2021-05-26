@@ -133,7 +133,6 @@ As features available are:
 
 - **Front-end:**
   - HTML5
-  <!-- - CSS3 -->
   - SCSS
   - Embedded Ruby
   - Bootstrap 4.6.0
@@ -144,9 +143,6 @@ As features available are:
 
 - **Database:**
   - Postgresql 13
-
-- **Deployment:**
-  - Heroku
 
 - **Planning / Management Tools:**
   - Trello
@@ -164,12 +160,13 @@ As features available are:
   - VS Code
   - Bundler
   - Yarn
+  - Heroku
 
 ---
 
 ## 10. Wireframes
 
-- Homepage available publicly
+- Homepage publicly available
 
 ![Public homepage](docs/public-homepage.png)
 
@@ -311,7 +308,7 @@ Third party services used were:
 
 - **AWS**
   - S3 Bucket It is used to upload and store images of pets, profile pictures of pet sitters and images to illustrate the services offered in the app.
-  <!-- - IAM -->
+  - IAM is used to manage authentication to AWS services. For this project, a user was created with S3 permissions and the user key and secret was added to the ruby credentials manager with a production key.
 
 - **Heroku:** The cloud platform is used for application deployment and management.
 
@@ -439,8 +436,21 @@ end
 
 ## 16. The database relations to be implemented
 
-Database relationships are implemented using foreign keys in relationships that use `belongs_to` in the relationship model.
+There are many relationships with the Users table that use `client_id`, `pet_sitter_id` or `admin_id` as a foreign key in another table. It is not represented in the Users table, as it is normalized in the database.
 
+The Pets Type table has a many-to-many relationship with the Pets table. 
+
+The Pets table has a many-to-one relationship with the Users table and many-to-many relationship with the Pet Type table, where foreign keys are `client_id` in Users to link to a specific customer and `pet_types_id` in the Pet Types table to link to a particular species of pet (cat or dog).
+
+The Services table has a many-to-many relatioship with the Pet Sitter Services.
+
+The Pet Sitter Services table contains relationships with two other Pet Sitter and Service tables, linking the tables using the foreign keys `pet_sitter_id` and `service_id`.
+
+The Order Services table has a relationship with the Service table through the Pet Sitter Service table. It is a join table that links the Orders and Pet Sitter Services tables. It contains `order_id` and `pet sitter_service_id` as foreign keys to list the services provided by the pet sitter in the Orders table.
+
+The Orders table has a many-to-many relationships between the Users, the Order Services and the Services tables. In addition, it is related to the Payments and the Reviews table. It contains `client_id` and `pet_sitter_id` as foreign keys to add information about the client and the pet sitter side of the transaction.
+
+The Reviews table is related to the Orders and Users table, which contains `order_id` as a foreign key to reference the order and the `client_id` and `pet_sitter_id` to link the users. In this case, the review is for the client to evaluate the care provided by the pet sitter and be available on the sitter's profile for future visitors.
 
 ---
 
@@ -541,10 +551,8 @@ Below are some screenshots of how the application code was developed, starting w
 
 After the idea was approved, setting up a Git repository, designing the first ERD and a site map to start the coding process were the steps that followed.
 
-<!-- não funciona -->
 ![First Trello board screenshot](docs/Trello1.png)
 
-<!-- não funciona -->
 ![Trello board screenshot 2](docs/Trello2.png)
 
 Then, the following steps were divided in order to respond to all the requirements of the evaluation respecting the sitemap and the wireframes already developed.
