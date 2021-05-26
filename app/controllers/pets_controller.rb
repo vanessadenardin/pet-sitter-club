@@ -1,13 +1,12 @@
 class PetsController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_pet, only: [:show, :update]
   before_action :set_pet_types, only: [:show, :new]
 
   def index
 
-    @pets = Pet.all
-    # authorize! :index, User.client_id
+    @pets = Pet.where(client_id: current_user.id)
   end
 
   def show

@@ -1,5 +1,5 @@
 class PetSittersController < ApplicationController
-    # load_and_authorize_resource
+    load_and_authorize_resource
     
     def index
         authorize! :index, User
@@ -11,16 +11,6 @@ class PetSittersController < ApplicationController
         authorize! :show, User
         @user = User.find(params[:id])
     end
-
-
-    # def update
-
-    #     if @pet_sitter_service.update(services_params)
-    #         redirect_to @service
-    #     else
-    #         render :edit
-    #     end
-    # end
 
     def add_service
 
@@ -49,16 +39,5 @@ class PetSittersController < ApplicationController
 
     end
 
-    # private
-
-    # def set_pet_sitter_service
-
-    #     @pet_sitter_service = PetSitterService.find(params[:id])
-    # end
-    
-    # def pet_sitter_services_params
-    
-    #     params.require(:pet_sitter_service).permit(:price, :active)
-    # end
 
 end
