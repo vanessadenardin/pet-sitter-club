@@ -23,7 +23,7 @@ class ServicesController < ApplicationController
 
   def show
 
-    @service = Service.find(params[:id])
+    @service = Service.includes(params[:id])
   end
 
   def new

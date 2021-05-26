@@ -4,8 +4,9 @@
     <h1 class="display-4"><%= @service.name %></h1>
     <p class="lead"><%= @service.description %></p>
 </div>
+    <div class="mx-auto" style="width: 200px;">
+        <%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
+        <%= link_to 'Back', services_path, class:" btn btn-outline-success btn-sm" %>
+    </div>
 </div>
-<div class="mx-auto" style="width: 200px;">
-<%= link_to 'Homepage', root_path, class:" btn btn-outline-dark btn-sm" %> |
-<%= link_to 'Back', services_path, class:" btn btn-outline-primary btn-sm" %> |
-</div>
+

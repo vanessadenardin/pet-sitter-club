@@ -76,20 +76,7 @@
       </p>
       <% end %>
 
-
-    </div>
-    <%
-=begin%>
-    <div class="col-md-6">
-      <%= image_tag @user.picture, class:"show-picture" %>
-    </div>
-    <%
-=end%>
-  </div>
-
-
-</div>
-
+<div>
 <%= link_to 'Back', root_path ,class:"btn btn-outline-primary btn-sm"%> |
 <%= link_to 'Edit', edit_user_registration_path(@user), class:"btn btn-outline-primary btn-sm"%> |
 <% if current_user.client? %>
@@ -98,3 +85,5 @@
   <%= link_to 'Leave review', orders_path, class:" btn btn-outline-primary btn-sm" %> |
 <% end %>
 <%= link_to 'Delete profile', root_path, class:"card-link btn btn-outline-danger btn-sm" %>
+</div>
+</div>

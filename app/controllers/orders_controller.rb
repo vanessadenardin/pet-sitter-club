@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
     def show
 
-        @order = Order.find(params[:id])
+        @order = Order.includes(:order_services, :review).find(params[:id])
     end
 
     def new
@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
 
         respond_to do |format|
             format.html { render orders_path }
-        end  
+        end
     end
 
     private

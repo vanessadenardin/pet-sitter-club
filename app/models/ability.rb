@@ -14,16 +14,19 @@ class Ability
     can :edit, User, id: user.id
     can :read, Order, client_id: user.id
     can :read, Order, pet_sitter_id: user.id
-    if user.role == 'pet_sitter'
+    can :create, Order if user.client?
+
+    if user.pet_sitter?
       can :edit, Order, pet_sitter_id: user.id
       can :edit, OrderService
       can :manage, PetSitterService, pet_sitter_id: user.id
-    elsif user.role == 'client'
+    elsif user.client?
       can :manage, Pet, client_id: user.id
       can :edit, Order, client_id: user.id
     end
 
     return unless user.admin?
+    
     can :manage, :all
 
     # Define abilities for the passed in user here. For example:
