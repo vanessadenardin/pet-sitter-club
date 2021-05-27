@@ -33,18 +33,20 @@ class User < ApplicationRecord
 
   def client?
 
-    role == "client"
+    role == 'client'
   end
 
   def pet_sitter?
 
-    role == "pet_sitter"
+    role == 'pet_sitter'
   end
 
   def name
     "#{first_name} #{last_name}"
   end
 
+  # all business rules should be in models
+  # controller only serve data
   def review_ratings
     if reviews.count.positive?
       total = reviews.inject(0) { |sum, review| sum + review.rating }

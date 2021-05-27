@@ -19,6 +19,7 @@ class PetsController < ApplicationController
     @pet = Pet.new
   end
 
+  # allow client add pets on the profile
   def create
     @pet = current_user.pets.new(pets_params)
     if @pet.save
@@ -32,6 +33,7 @@ class PetsController < ApplicationController
 
   end
 
+  # allow client edit pets on the profile
   def update
     if @pet.update(pets_params)
       redirect_to @pet
@@ -40,6 +42,7 @@ class PetsController < ApplicationController
     end
   end
 
+    # allow client delete pet from the profile
   def destroy
 
     pet = Pet.find(params[:id])

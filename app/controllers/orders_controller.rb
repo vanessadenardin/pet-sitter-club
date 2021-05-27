@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
     def show
 
+# includes method to retrieve data to display in the view
         @order = Order.includes(:order_services, :review).find(params[:id])
     end
 
@@ -50,6 +51,7 @@ class OrdersController < ApplicationController
         redirect_to root_path
     end
     
+    # method to allow user leave a review in the order
     def leave_review
 
         respond_to do |format|
@@ -57,7 +59,11 @@ class OrdersController < ApplicationController
         end
     end
 
+    # giving option to the pet siiter mark as completed each order service done
+    # when the last order service is completed - order is completed
+    # order = completed change the status to complete
     def complete_order_service
+
         order_service = OrderService.find(params[:order_service_id])
         order_service.completed = true
         order_service.save

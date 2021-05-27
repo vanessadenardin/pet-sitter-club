@@ -12,6 +12,7 @@ class PetSittersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    # allow only pet sitters activate services on their profile
     def add_service
 
         pet_sitter_service = PetSitterService.where(pet_sitter_id: current_user.id, service_id: params[:service_id])
@@ -24,6 +25,7 @@ class PetSittersController < ApplicationController
         redirect_to services_path
     end
 
+    # allow only pet sitters remove services on their profile
     def remove_service
         
         pet_sitter_service = PetSitterService.find_by(pet_sitter_id: current_user.id, service_id: params[:service_id])

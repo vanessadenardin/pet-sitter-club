@@ -33,6 +33,8 @@
 - [16. The database relations to be implemented](#15.-The-database-relations-to-be-implemented)
 - [17. Database schema design](#16.-Database-schema-design)
 - [18. Tasks allocation and tracking](#17.-Tasks-allocation-and-tracking)
+- [19. Future work](#19.-Future-work)
+- [20. Instructions](#20.-Instructions)
 
 ---
 
@@ -120,6 +122,7 @@ As features available are:
 - **Internal links** to encourage user stay longer on the website, also to advertise relevant content.
 - **Customer reviews** include some previous client's experience after hiring services from a pet sitter that could be useful for potential customers.
 - **Tabs** familiarizing the user with the app
+- **Carousel images** to display the services available in the application in the homepage
 
 ---
 
@@ -168,7 +171,7 @@ As features available are:
 
 - Homepage publicly available
 
-![Public homepage](docs/public-homepage.png)
+![Public homepage](docs/public-wireframe.png)
 
 - Page for website log in
 
@@ -436,19 +439,19 @@ end
 
 ## 16. The database relations to be implemented
 
-There are many relationships with the Users table that use `client_id`, `pet_sitter_id` or `admin_id` as a foreign key in another table. It is not represented in the Users table, as it is normalized in the database.
+There are many relationships with the Users table that use `client_id`, `pet_sitter_id` or `admin_id` as a foreign key in another table. It is not represented in the Users table, as it is normalized in the database. The Users table has a one-to-many relationship with the Orders table.
 
 The Pets Type table has a many-to-many relationship with the Pets table. 
 
 The Pets table has a many-to-one relationship with the Users table and many-to-many relationship with the Pet Type table, where foreign keys are `client_id` in Users to link to a specific customer and `pet_types_id` in the Pet Types table to link to a particular species of pet (cat or dog).
 
-The Services table has a many-to-many relatioship with the Pet Sitter Services.
+The Services table has a one-to-many relatioship with the Pet Sitter Services.
 
 The Pet Sitter Services table contains relationships with two other Pet Sitter and Service tables, linking the tables using the foreign keys `pet_sitter_id` and `service_id`.
 
-The Order Services table has a relationship with the Service table through the Pet Sitter Service table. It is a join table that links the Orders and Pet Sitter Services tables. It contains `order_id` and `pet sitter_service_id` as foreign keys to list the services provided by the pet sitter in the Orders table.
+The Order Services table has a relationship with the Services table through the Pet Sitter Services table. It is a join table that links the Orders and Pet Sitter Services tables. It contains `order_id` and `pet sitter_service_id` as foreign keys to list the services provided by the pet sitter in the Orders table. The Order Services table has one-to-many relatioship with Orders table.
 
-The Orders table has a many-to-many relationships between the Users, the Order Services and the Services tables. In addition, it is related to the Payments and the Reviews table. It contains `client_id` and `pet_sitter_id` as foreign keys to add information about the client and the pet sitter side of the transaction.
+The Orders table has a many-to-many relationship with the Services tables. In addition, it is related to the Payments and the Reviews table. It contains `client_id` and `pet_sitter_id` as foreign keys to add information about the client and the pet sitter side of the transaction.
 
 The Reviews table is related to the Orders and Users table, which contains `order_id` as a foreign key to reference the order and the `client_id` and `pet_sitter_id` to link the users. In this case, the review is for the client to evaluate the care provided by the pet sitter and be available on the sitter's profile for future visitors.
 
@@ -456,11 +459,11 @@ The Reviews table is related to the Orders and Users table, which contains `orde
 
 ## 17. Database schema design
 
-The arguments for each table also include `created_at:datetime` and` updated_at:datetime`, in addition to the table reference `table_id:bigint`.
+The arguments for each table also include `created_at:datetime` and `updated_at:datetime`, in addition to the table reference `table_id:bigint`. In addition, the tables: `active_storage_attachments`, `active_storage_blobs` and `active_storage_variant_records` have been added due to the use of Active Storage.
 
 - **Users**
 
-```
+```ruby
     first_name:string
     last_name:string
     email:string
@@ -571,4 +574,39 @@ From there, the tasks allocated were separated by pages in the application or im
 
 ![Trello board screenshot 8](docs/Trello8.png)
 
+Website deployment in the Heroku platform were done just in time for the presentation on 26th of May. Also, set up in the AWS S3 Bucket to add images in the website. This allowed several Trello cards to be transferred to the tasks done group.
+
 ![Trello board screenshot 9](docs/Trello9.png)
+
+## 19. Future work
+
+- **Payment** transactions, suca as Stripe
+- **Calendar** to display pet sitter availability
+- **Chat box** to allow direct contact between client and pet sitter
+- **FAQ page**  available to explain detailed rules and how services are performed
+- **Maps** to match the locations between the client and the nearest animal nannies
+
+
+## 20. Instructions
+
+If you want to run this application follow the instruction below:
+
+- Clone this repository
+- `yarn install`
+- `bundle install`
+- Configure Ruby on Rails
+- `rake db:create`
+- `rake db:migrate`
+- `rake db:seed`
+- As the images have been saved in a S3 Bucket, Amazon credentials need to be set up:
+
+  - `export EDITOR="code --wait"`
+  - `rails credentials:edit --environment <env>`
+
+  ```yaml
+  aws:
+    access_key_id: <value>
+    secret_access_key: <value>
+    bucket_name: <value>
+    region: <value>
+  ```

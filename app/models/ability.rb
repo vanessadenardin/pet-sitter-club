@@ -5,6 +5,8 @@ class Ability
 
   def initialize(user)
 
+    # permissions for public views
+    # no need of registration in the app
     alias_action :index, :to => :look
     can :look, Service
     can :read, User
@@ -14,12 +16,15 @@ class Ability
     can :edit, User, id: user.id
     can :read, Order, client_id: user.id
     can :read, Order, pet_sitter_id: user.id
+    # client can create order
     can :create, Order if user.client?
 
     if user.pet_sitter?
       can :edit, Order, pet_sitter_id: user.id
       can :edit, OrderService
+      # pet sitter can add/ remove service available from their profile
       can :manage, PetSitterService, pet_sitter_id: user.id
+      # pet sitter can mark as completed the services in the order
       can :complete_order_service, Order, pet_sitter_id: user.id
     elsif user.client?
       can :manage, Pet, client_id: user.id

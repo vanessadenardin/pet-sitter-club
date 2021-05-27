@@ -9,6 +9,8 @@ class ServicesController < ApplicationController
     @services = Service.all
     return unless user_signed_in? && current_user.pet_sitter?
 
+    # pet sitters can add for their lists the services available
+    
     @pet_sitter_services = PetSitterService.where(pet_sitter_id: current_user.id)
     @services.each do |service|
       begin
@@ -31,6 +33,7 @@ class ServicesController < ApplicationController
     @service = Service.new
   end
 
+  # only admin can add / edit a new service to the list
   def create
 
     @service = current_user.services.new(services_params)

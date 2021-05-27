@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   load_and_authorize_resource
 
+  # add new review for an order
+  # contains pet sitter, client and order references
   def new
     @review = Review.new(
       order_id: params[:order_id],
