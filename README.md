@@ -40,13 +40,13 @@
 
 ## 1. Github Repository
 
-[Github repository link](#https://github.com/vanessadenardin/pet-sitter-club)
+https://github.com/vanessadenardin/pet-sitter-club
 
 ---
 
 ## 2. Website
 
-[Website link](#https://pet-sitter-club.herokuapp.com/)
+https://pet-sitter-club.herokuapp.com/
 
 ---
 
